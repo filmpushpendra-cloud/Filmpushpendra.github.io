@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaders &amp; Teams — Subtext Performance Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVBPPK7VHT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WVBPPK7VHT');
+  </script>
+  <!-- Umami Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f275b875-9386-4166-ad88-1d6c11a883c2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --rust:#9b4a1f;--rust-light:#c0612a;--dark:#1c1a18;--cream:#f4f0ea;
+  --warm-white:#ffffff;--warm-gray:#e6e1d8;--muted:#524e4a;
+  --serif:'Cormorant Garamond',serif;--sans:'Jost',sans-serif;
+  --page-max:1440px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden;}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
+
+/* PAGE WRAPPER */
+.page-wrap{max-width:var(--page-max);margin:0 auto;overflow:hidden;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--warm-gray);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:88px;}
+.logo-nav img{height:62px;width:auto;display:block;}
+.nav-menu{display:flex;align-items:center;list-style:none;gap:0;}
+.nav-menu li a{display:block;padding:0 16px;font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:var(--dark);transition:color .25s;}
+.nav-menu li a:hover,.nav-menu li.active a{color:var(--rust);}
+.nav-cta{background:var(--dark)!important;color:white!important;padding:11px 22px!important;letter-spacing:2px!important;transition:background .25s!important;}
+.nav-cta:hover{background:var(--rust)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--dark);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;max-height:680px;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:64px 60px 64px 80px;}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:16px;line-height:1.3;}
+.hero-title{font-family:var(--serif);font-size:clamp(37px,4.2vw,55px);font-weight:300;line-height:1.05;color:var(--dark);margin-bottom:24px;}
+.rule{width:44px;height:2px;background:var(--rust);margin-bottom:24px;}
+.hero-sub{font-size:17px;font-weight:300;line-height:1.65;color:var(--muted);margin-bottom:16px;max-width:440px;}
+.hero-diff{font-family:var(--serif);font-size:clamp(16px,1.5vw,19px);font-style:italic;font-weight:300;line-height:1.55;color:var(--dark);max-width:440px;}
+.hero-right{overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;filter:brightness(.92) saturate(.88) contrast(1.05);}
+
+/* ── THE DIFFERENCE ── */
+.difference{background:var(--dark);padding:72px 80px;border-top:6px solid var(--cream);}
+.diff-inner{max-width:800px;margin:0 auto;}
+.diff-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#e8935a;margin-bottom:20px;line-height:1.3;}
+.diff-title{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:300;color:white;margin-bottom:28px;line-height:1.2;}
+.diff-rule{width:44px;height:2px;background:var(--rust);margin-bottom:28px;}
+.diff-body{font-size:17px;font-weight:300;line-height:1.68;color:rgba(255,255,255,.92);margin-bottom:20px;}
+.diff-body:last-child{margin-bottom:0;}
+
+
+/* ── INDIVIDUAL EXECUTIVE — DARK ── */
+.exec-dark{background:var(--dark);padding:72px 80px;}
+.exec-dark .exec-inner{max-width:800px;margin:0 auto;}
+.exec-dark .exec-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#e8935a;margin-bottom:20px;line-height:1.3;}
+.exec-dark .exec-title{font-family:var(--serif);font-size:clamp(30px,3.2vw,44px);font-weight:300;color:white;margin-bottom:24px;line-height:1.15;}
+.exec-dark .exec-rule{width:44px;height:2px;background:var(--rust);margin-bottom:28px;}
+.exec-dark .exec-body{font-size:17px;font-weight:300;line-height:1.68;color:rgba(255,255,255,.92);margin-bottom:22px;}
+.exec-dark .exec-note{font-family:var(--serif);font-size:17px;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:36px;line-height:1.55;}
+
+.btn-solid{background:var(--dark);color:white;padding:15px 34px;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:2px solid var(--dark);transition:all .3s;display:inline-block;line-height:1;}
+.btn-solid:hover{background:var(--rust);border-color:var(--rust);}
+
+/* ── TEAM WORKSHOPS ── */
+.team-workshops{background:var(--warm-white);padding:72px 80px;border-top:1px solid var(--warm-gray);}
+.team-inner{max-width:800px;margin:0 auto;}
+.team-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:20px;line-height:1.3;}
+.team-title{font-family:var(--serif);font-size:clamp(30px,3.2vw,44px);font-weight:300;color:var(--dark);margin-bottom:24px;line-height:1.15;}
+.team-rule{width:44px;height:2px;background:var(--rust);margin-bottom:28px;}
+.team-body{font-size:17px;font-weight:300;line-height:1.68;color:var(--muted);margin-bottom:36px;}
+.btn-outline-rust{display:inline-block;padding:13px 28px;border:1.5px solid var(--rust);color:var(--rust);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;line-height:1;}
+.btn-outline-rust:hover{background:var(--rust);color:white;}
+
+/* ── OUTCOMES ── */
+.outcomes{background:var(--cream);padding:72px 80px;}
+.section-head{text-align:center;margin-bottom:48px;}
+.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;line-height:1.3;}
+.section-title{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:300;color:var(--dark);margin-bottom:14px;line-height:1.2;}
+.section-rule{width:44px;height:2px;background:var(--rust);margin:0 auto;}
+.outcomes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--warm-gray);}
+.outcome-card{background:var(--warm-white);padding:32px 28px;}
+.outcome-card h4{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--dark);margin-bottom:10px;line-height:1.2;}
+.outcome-card p{font-size:17px;font-weight:300;line-height:1.6;color:var(--muted);}
+
+/* ── SEVEN PILLARS WITH TABS ── */
+.method{padding:72px 80px;background:var(--warm-white);border-top:1px solid var(--warm-gray);}
+.method-head{text-align:center;margin-bottom:44px;}
+.method-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;line-height:1.3;}
+.method-title{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:300;color:var(--dark);margin-bottom:14px;line-height:1.2;}
+.method-rule{width:44px;height:2px;background:var(--rust);margin:0 auto;}
+.tabs-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:0;max-width:1000px;margin-left:auto;margin-right:auto;}
+.tab-btn{background:var(--cream);border:1px solid var(--warm-gray);padding:11px 16px;font-size:11px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;cursor:pointer;color:var(--dark);transition:all .25s;font-family:var(--sans);}
+.tab-btn:hover{border-color:var(--rust);color:var(--rust);}
+.tab-btn.active{background:var(--dark);color:white;border-color:var(--dark);}
+.tab-panel{display:none;background:var(--cream);border:1px solid var(--warm-gray);max-width:1000px;margin:0 auto;padding:40px 44px;}
+.tab-panel.active{display:block;}
+.lens-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;}
+.lens-mechanic{font-family:var(--serif);font-size:23px;font-style:italic;color:var(--dark);margin-bottom:16px;}
+.tab-panel p{font-size:17px;font-weight:300;line-height:1.65;color:var(--muted);max-width:680px;}
+
+/* ── CREDIBILITY STRIP ── */
+.cred-strip{background:var(--dark);padding:64px 80px;text-align:center;}
+.cred-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#e8935a;margin-bottom:32px;line-height:1.3;}
+.cred-items{display:flex;justify-content:center;gap:80px;flex-wrap:wrap;}
+.cred-item{text-align:center;}
+.cred-item h4{font-family:var(--serif);font-size:24px;font-weight:400;color:white;margin-bottom:8px;line-height:1.2;}
+.cred-item p{font-size:15px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;}
+
+/* ── VGIK PHOTO ── */
+.vgik-photo{position:relative;overflow:hidden;}
+.vgik-photo img{width:100%;height:460px;object-fit:cover;object-position:center 25%;display:block;filter:brightness(.82) saturate(.85) contrast(1.06);}
+.vgik-caption{position:absolute;bottom:0;left:0;right:0;padding:56px 80px 32px;background:linear-gradient(to top,rgba(20,18,16,.88) 50%,transparent);}
+.vgik-caption p{font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(244,240,234,.9);line-height:1.5;max-width:680px;}
+
+/* ── PROCESS ── */
+.process{background:var(--cream);padding:72px 80px;}
+.process-list{max-width:680px;margin:36px auto 0;}
+.process-step{display:flex;gap:28px;margin-bottom:36px;}
+.process-step:last-child{margin-bottom:0;}
+.process-num{font-family:var(--serif);font-size:32px;font-style:italic;color:var(--rust);flex-shrink:0;line-height:1;margin-top:4px;}
+.process-content h4{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--dark);margin-bottom:8px;line-height:1.2;}
+.process-content p{font-size:17px;font-weight:300;line-height:1.62;color:var(--muted);}
+.process-cta{text-align:center;margin-top:52px;}
+
+/* FOOTER */
+footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
+.footer-top{display:grid;grid-template-columns:1fr 1.3fr 1fr;padding:52px 80px;border-bottom:1px solid var(--warm-gray);}
+.footer-brand img{height:64px;width:auto;margin-bottom:14px;display:block;}
+.footer-tagline{font-size:15px;font-weight:300;line-height:1.6;color:var(--muted);}
+.footer-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-left:1px solid var(--warm-gray);border-right:1px solid var(--warm-gray);padding:0 36px;}
+.footer-mid-text{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--dark);margin-bottom:22px;line-height:1.25;}
+.footer-right{padding-left:44px;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.contact-row{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:300;color:var(--muted);line-height:1.4;}
+.contact-row svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;stroke:var(--rust);fill:none;stroke-width:1.6;}
+.social-row{display:flex;gap:16px;margin-top:4px;flex-wrap:wrap;}
+.social-row a{color:var(--dark);text-decoration:none;font-size:13px;letter-spacing:1px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
+.social-row a:hover{color:var(--rust);border-color:var(--rust);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 80px;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-size:13px;color:var(--muted);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--rust);}
+
+/* MOBILE */
+@media(max-width:960px){
+  nav{padding:0 22px;}
+  .hamburger{display:flex;}
+  .nav-menu{display:none;position:absolute;top:88px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:12px 0 20px;border-bottom:1px solid var(--warm-gray);box-shadow:0 8px 20px rgba(0,0,0,.06);}
+  .nav-menu.open{display:flex;}
+  .nav-menu li a{padding:13px 26px;font-size:14px;}
+  .nav-cta{margin:10px 26px 0!important;text-align:center;display:block!important;padding:13px 22px!important;}
+  .hero{grid-template-columns:1fr;min-height:auto;max-height:none;}
+  .hero-left{padding:48px 24px 40px;}
+  .hero-right{height:300px;}
+  .difference{padding:52px 24px;}
+  .exec-dark{padding:52px 24px;}
+  .team-workshops{padding:52px 24px;}
+  .outcomes{padding:52px 22px;}
+  .outcomes-grid{grid-template-columns:1fr 1fr;}
+  .method{padding:52px 22px;}
+  .tab-panel{padding:28px 24px;}
+  .cred-strip{padding:52px 24px;}
+  .vgik-photo img{height:300px;}
+  .vgik-caption{padding:36px 24px 20px;}
+  .cred-items{gap:40px;}
+  .process{padding:52px 22px;}
+  .footer-top{grid-template-columns:1fr;padding:36px 24px;gap:32px;}
+  .footer-mid{border:none;border-top:1px solid var(--warm-gray);border-bottom:1px solid var(--warm-gray);padding:32px 0;}
+  .footer-right{padding-left:0;}
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-nav">
+    <img src="assets/images/spl-mark-clean-v2.png" alt="Subtext Performance Lab">
+  </a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navmenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="for-actors.html">Actors</a></li>
+    <li class="active"><a href="for-teams.html">Leaders &amp; Teams</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="engage.html">Engage</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Leaders &amp; Teams</p>
+    <h1 class="hero-title">Leadership,<br>Beyond the Surface.</h1>
+    <div class="rule"></div>
+    <p class="hero-sub">Most performance gaps in the workplace aren't about skill. They're about what happens in the body before the mind catches up.</p>
+    <p class="hero-diff">The same tools sharpened across film sets, festival stages and India's premier film school — now brought to the boardroom.</p>
+  </div>
+  <div class="hero-right">
+    <img src="assets/images/workshop-moment.jpg" alt="A workshop in session, participants fully present in the room">
+  </div>
+</section>
+
+<!-- THE DIFFERENCE -->
+<section class="difference">
+  <div class="diff-inner">
+    <p class="diff-eyebrow">Why This Is Different</p>
+    <h2 class="diff-title">Not a Workshop. A Practice.</h2>
+    <div class="diff-rule"></div>
+    <p class="diff-body">Most corporate communication training teaches you what to say and how to say it. This work goes underneath that — to the physical and psychological patterns that shape how you're actually received in a room, before you've said a word.</p>
+    <p class="diff-body">The result is not polish. It is presence.</p>
+  </div>
+</section>
+
+<!-- WHAT CHANGES -->
+<section class="outcomes">
+  <div class="section-head">
+    <p class="section-eyebrow">What Changes</p>
+    <h2 class="section-title">Calm Is Trained, Not Found.</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <h4>Less Reactive, Less Anxious</h4>
+      <p>The nervous system stays steady under real pressure instead of running on adrenaline by mid-morning.</p>
+    </div>
+    <div class="outcome-card">
+      <h4>Focused Energy</h4>
+      <p>Attention that doesn't scatter under stress — held, available, ready for what the moment actually needs.</p>
+    </div>
+    <div class="outcome-card">
+      <h4>Real Trust &amp; Cohesion</h4>
+      <p>Trust that holds up under pressure because it was built through real understanding, not just policy.</p>
+    </div>
+    <div class="outcome-card">
+      <h4>Stronger Listening</h4>
+      <p>Hearing what's underneath the words, not just waiting for a turn to speak.</p>
+    </div>
+    <div class="outcome-card">
+      <h4>Leadership Presence</h4>
+      <p>Authority that's felt, not performed. People can tell the difference.</p>
+    </div>
+    <div class="outcome-card">
+      <h4>Adaptability Under Pressure</h4>
+      <p>Responding to what's actually happening in the room, not what was planned for.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INDIVIDUAL EXECUTIVE COACHING -->
+<section class="exec-dark">
+  <div class="exec-inner">
+    <p class="exec-eyebrow">For the Individual Executive</p>
+    <h2 class="exec-title">One executive. One process. Built entirely around what you need.</h2>
+    <div class="exec-rule"></div>
+    <p class="exec-body">Private, confidential coaching for leaders who want to work on how they show up under pressure — in a board presentation, a high-stakes negotiation, a decision made under real uncertainty. The process is designed from scratch around you: your role, your specific challenges, your next moment that matters.</p>
+    <p class="exec-note">Taken on selectively. Enquire to begin a conversation.</p>
+    <a href="contact.html" class="btn-solid">Get in Touch</a>
+  </div>
+</section>
+
+<!-- TEAM WORKSHOPS -->
+<section class="team-workshops">
+  <div class="team-inner">
+    <p class="team-eyebrow">For Teams &amp; Organisations</p>
+    <h2 class="team-title">A room that actually works together.</h2>
+    <div class="team-rule"></div>
+    <p class="team-body">From half-day sessions to multi-day programmes — built around what your team specifically needs, not a standard curriculum. Most effective in groups of up to 25, where real engagement with every person is possible.</p>
+    <a href="contact.html" class="btn-outline-rust">Request a Demonstration →</a>
+  </div>
+</section>
+
+<!-- SEVEN PILLARS WITH TABS -->
+<section class="method">
+  <div class="method-head">
+    <p class="method-eyebrow">The Seven Pillars of Our Training</p>
+    <h2 class="method-title">A methodology born on film sets. Brought to the boardroom.</h2>
+    <div class="method-rule"></div>
+  </div>
+  <div class="tabs-nav" id="tabsNav">
+    <button class="tab-btn active" data-tab="0">Calm Under Pressure</button>
+    <button class="tab-btn" data-tab="1">Confidence Under Scrutiny</button>
+    <button class="tab-btn" data-tab="2">Find Your Voice</button>
+    <button class="tab-btn" data-tab="3">Adapt Fluidly</button>
+    <button class="tab-btn" data-tab="4">Reading the Room</button>
+    <button class="tab-btn" data-tab="5">Own the Room</button>
+    <button class="tab-btn" data-tab="6">Navigate the Space</button>
+  </div>
+  <div class="tab-panel active" data-panel="0">
+    <p class="lens-label">Somatic Grounding</p>
+    <p class="lens-mechanic">Calm Under Pressure</p>
+    <p>The nervous system doesn't distinguish between a difficult conversation and a physical threat. This pillar trains the body's response to pressure — so when the moment arrives, calm is a practised state, not a lucky accident.</p>
+  </div>
+  <div class="tab-panel" data-panel="1">
+    <p class="lens-label">Inner Authority</p>
+    <p class="lens-mechanic">Confidence Under Scrutiny</p>
+    <p>The difference between confidence that holds and confidence that collapses under pressure. Leaders learn to access a settled, grounded state under scrutiny — so what the room sees isn't a performance of confidence but the real thing.</p>
+  </div>
+  <div class="tab-panel" data-panel="2">
+    <p class="lens-label">Vocal Presence</p>
+    <p class="lens-mechanic">Find Your Voice</p>
+    <p>Most people don't realise how much their voice gives away before they've said a word. This work trains a fuller, more grounded vocal quality — one that carries weight and conviction without strain or effort.</p>
+  </div>
+  <div class="tab-panel" data-panel="3">
+    <p class="lens-label">Applied Agility</p>
+    <p class="lens-mechanic">Adapt Fluidly</p>
+    <p>Responding to what's actually in the room, not what was planned for. Using structured improvisation, leaders practise dropping rigid agendas and reading what's actually happening — rather than defending a position that no longer serves the moment.</p>
+  </div>
+  <div class="tab-panel" data-panel="4">
+    <p class="lens-label">Decoding the Subtext</p>
+    <p class="lens-mechanic">Reading the Room</p>
+    <p>Most of what matters in a negotiation, a difficult conversation or a brief goes unsaid. This pillar trains the ability to read what's beneath the surface — the want behind the stated position, the dynamic shaping the exchange.</p>
+  </div>
+  <div class="tab-panel" data-panel="5">
+    <p class="lens-label">Command and Dynamic Presence</p>
+    <p class="lens-mechanic">Own the Room</p>
+    <p>How you physically occupy space, hold attention and shape the energy of a room — before you've said a word. Not static authority — active, alive, impossible to ignore.</p>
+  </div>
+  <div class="tab-panel" data-panel="6">
+    <p class="lens-label">Physical Intelligence</p>
+    <p class="lens-mechanic">Navigate the Space</p>
+    <p>Where you stand, how you move, where your attention lands — these are choices, not accidents. This pillar trains physical awareness so that every moment in a room is considered rather than unconscious.</p>
+  </div>
+</section>
+
+<!-- VGIK PHOTO -->
+<section class="vgik-photo">
+  <img src="assets/images/pushpendra-singh-at-vgik-moscow.jpg" alt="Pushpendra Singh at VGIK Moscow">
+  <div class="vgik-caption">
+    <p>Pushpendra Singh at VGIK — the All-Russian State University of Cinematography, Moscow.</p>
+  </div>
+</section>
+
+<!-- HOW IT BEGINS -->
+<section class="process">
+  <div class="section-head">
+    <p class="section-eyebrow">Getting Started</p>
+    <h2 class="section-title">How It Begins.</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="process-list">
+    <div class="process-step">
+      <span class="process-num">01</span>
+      <div class="process-content">
+        <h4>A conversation.</h4>
+        <p>Tell us what you're working on. We'll tell you honestly whether and how we can help.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="process-num">02</span>
+      <div class="process-content">
+        <h4>A demonstration.</h4>
+        <p>Before any commitment, we'll come to you — one session with your team, so you can see the work in action. Travel and accommodation outside Mumbai not included.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <span class="process-num">03</span>
+      <div class="process-content">
+        <h4>A programme.</h4>
+        <p>If it feels right, we design something built entirely around your team's specific needs — not a standard curriculum.</p>
+      </div>
+    </div>
+  </div>
+  <div class="process-cta">
+    <a href="contact.html" class="btn-solid">Request a Demonstration</a>
+  </div>
+</section>
+
+
+<!-- CREDIBILITY STRIP -->
+<section class="cred-strip">
+  <p class="cred-eyebrow">Where the Work Has Been Taken</p>
+  <div class="cred-items">
+    <div class="cred-item">
+      <h4>Infosys</h4>
+      <p>Drama workshop with employees<br>Hinjewadi, Pune</p>
+    </div>
+    <div class="cred-item">
+      <h4>National Defence Academy</h4>
+      <p>Drama workshop with cadets<br>Khadakwasla, Pune</p>
+    </div>
+  </div>
+</section>
+
+
+
+</div><!-- end page-wrap -->
+
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="assets/images/spl-wordmark-clean.png" alt="Subtext Performance Lab">
+      <p class="footer-tagline">Beyond Words. Beyond Surface.<br>Presence That Matters.</p>
+    </div>
+    <div class="footer-mid">
+      <p class="footer-mid-text">Ready to begin?</p>
+      <a href="contact.html" class="btn-solid">Get in Touch</a>
+    </div>
+    <div class="footer-right">
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>presence@subtextperformancelab.com</span>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Mumbai, India</span>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/subtextperformancelab" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com/subtextperformancelab" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://linkedin.com/in/pushpendra-singh-bbbb80415" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://youtube.com/@subtextperformancelab" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Subtext Performance Lab. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="legal.html#privacy">Privacy Policy</a>
+      <a href="legal.html#terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const ham = document.getElementById('ham');
+  const menu = document.getElementById('navmenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+
+  // Seven Pillars tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
