@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Subtext Performance Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVBPPK7VHT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WVBPPK7VHT');
+  </script>
+  <!-- Umami Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f275b875-9386-4166-ad88-1d6c11a883c2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --rust:#9b4a1f;--rust-light:#c0612a;--dark:#1c1a18;--cream:#f4f0ea;
+  --warm-white:#ffffff;--warm-gray:#e6e1d8;--muted:#524e4a;
+  --serif:'Cormorant Garamond',serif;--sans:'Jost',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden;}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
+
+nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--warm-gray);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:88px;}
+.logo-nav img{height:62px;width:auto;display:block;}
+.nav-menu{display:flex;align-items:center;list-style:none;gap:0;}
+.nav-menu li a{display:block;padding:0 16px;font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:var(--dark);transition:color .25s;}
+.nav-menu li a:hover,.nav-menu li.active a{color:var(--rust);}
+.nav-cta{background:var(--dark)!important;color:white!important;padding:11px 22px!important;letter-spacing:2px!important;transition:background .25s!important;}
+.nav-cta:hover{background:var(--rust)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--dark);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* PAGE HEADER */
+.page-header{text-align:center;padding:72px 40px 48px;background:var(--cream);}
+.page-header h1{font-family:var(--serif);font-size:clamp(43px,5.2vw,67px);font-weight:300;color:var(--dark);margin-bottom:16px;}
+.page-header p.sub{font-size:15px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+
+/* INTRO BAND */
+.intro-band{display:grid;grid-template-columns:1fr 1fr;background:var(--warm-white);}
+.intro-portrait{overflow:hidden;max-height:560px;}
+.intro-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;filter:brightness(.92) saturate(.88) contrast(1.04);}
+.intro-text{display:flex;flex-direction:column;justify-content:center;padding:64px 64px;}
+.intro-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:18px;}
+.intro-text p{font-size:17px;font-weight:300;line-height:1.7;color:var(--muted);margin-bottom:18px;}
+.intro-text p:last-child{margin-bottom:0;}
+.intro-text strong{color:var(--dark);font-weight:500;}
+
+/* MOVEMENT SECTION */
+.movement{padding:72px 80px;}
+.movement.alt{background:var(--warm-white);}
+.movement-header{margin-bottom:44px;}
+.movement-num{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:12px;}
+.movement-title{font-family:var(--serif);font-size:clamp(35px,3.7vw,49px);font-weight:300;color:var(--dark);margin-bottom:16px;}
+.movement-rule{width:44px;height:2px;background:var(--rust);margin-bottom:28px;}
+.movement-body{font-size:16px;font-weight:300;line-height:1.7;color:var(--muted);max-width:720px;margin-bottom:0;}
+.movement-body p{margin-bottom:18px;}
+.movement-body p:last-child{margin-bottom:0;}
+.movement-body strong{color:var(--dark);font-weight:500;}
+.movement-body em{font-style:italic;color:var(--dark);}
+
+.img-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px;}
+.img-pair img{width:100%;height:340px;object-fit:cover;object-position:center 20%;display:block;filter:brightness(.9) saturate(.85) contrast(1.04);}
+.img-pair .img-caption{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:8px;line-height:1.4;}
+
+
+.img-full{width:100%;height:380px;object-fit:cover;display:block;filter:brightness(.9) saturate(.85) contrast(1.04);margin-top:44px;}
+.img-contained{display:block;max-width:680px;width:100%;height:auto;margin:44px auto 0;box-shadow:0 14px 36px rgba(0,0,0,.18);}
+.img-caption-full{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:8px;line-height:1.4;max-width:600px;}
+
+/* ORIGIN STORY */
+.origin{background:var(--dark);padding:72px 80px;}
+.origin-inner{max-width:760px;margin:0 auto;}
+.origin-label{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#e8935a;margin-bottom:20px;}
+.origin-quote{font-family:var(--serif);font-size:clamp(22px,2.6vw,30px);font-weight:300;font-style:italic;line-height:1.5;color:white;margin-bottom:28px;}
+.origin-quote em{font-style:normal;color:var(--rust-light);}
+.origin-attr{font-size:14px;letter-spacing:1px;color:rgba(255,255,255,.82);}
+
+/* CLOSING LINE */
+.closing{text-align:center;padding:64px 40px;background:var(--cream);}
+.closing p{font-family:var(--serif);font-size:clamp(24px,2.7vw,35px);font-weight:300;font-style:italic;color:var(--dark);}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--warm-white);padding:72px 80px;}
+.testimonials-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+.testimonials-grid.three{grid-template-columns:1fr 1fr;}
+.testimonial-card{background:var(--cream);border:1px solid var(--warm-gray);padding:30px 28px;}
+.mark{font-family:var(--serif);font-size:43px;color:var(--rust);opacity:.4;line-height:.5;display:block;margin-bottom:12px;}
+.testimonial-card p{font-size:17px;font-weight:300;line-height:1.6;color:var(--muted);margin-bottom:14px;font-style:italic;}
+.testimonial-card .attr{font-size:12px;letter-spacing:.5px;color:var(--rust);font-weight:600;}
+
+/* PRESS */
+.press{padding:72px 80px;background:var(--cream);}
+.press-list{margin-top:40px;border-top:1px solid var(--warm-gray);}
+.press-item{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:18px 0;border-bottom:1px solid var(--warm-gray);}
+.press-item .pub{font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--dark);white-space:nowrap;}
+.press-item .desc{font-size:17px;font-weight:300;color:var(--muted);}
+.press-item a{font-size:12px;letter-spacing:1px;text-decoration:none;color:var(--rust);white-space:nowrap;transition:color .2s;}
+.press-item a:hover{color:var(--rust-light);}
+.imdb-link{display:inline-block;margin-top:28px;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--rust);border-bottom:1px solid var(--rust);padding-bottom:2px;transition:color .2s;}
+.imdb-link:hover{color:var(--rust-light);border-color:var(--rust-light);}
+
+/* FOOTER */
+footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
+.footer-top{display:grid;grid-template-columns:1fr 1.3fr 1fr;padding:48px 60px;border-bottom:1px solid var(--warm-gray);}
+.footer-brand img{height:64px;width:auto;margin-bottom:14px;display:block;}
+.footer-tagline{font-size:15px;font-weight:300;line-height:1.6;color:var(--muted);}
+.footer-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-left:1px solid var(--warm-gray);border-right:1px solid var(--warm-gray);padding:0 36px;}
+.footer-mid-text{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--dark);margin-bottom:20px;}
+.btn-solid{background:var(--dark);color:white;padding:15px 32px;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:2px solid var(--dark);transition:all .3s;display:inline-block;}
+.btn-solid:hover{background:var(--rust);border-color:var(--rust);}
+.footer-right{padding-left:44px;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+.contact-row{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:300;color:var(--muted);line-height:1.4;}
+.contact-row svg{width:14px;height:14px;flex-shrink:0;margin-top:2px;stroke:var(--rust);fill:none;stroke-width:1.6;}
+.social-row{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap;}
+.social-row a{color:var(--dark);text-decoration:none;font-size:13px;letter-spacing:1px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
+.social-row a:hover{color:var(--rust);border-color:var(--rust);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 60px;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-size:13px;color:var(--muted);}
+.footer-links{display:flex;gap:22px;}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--rust);}
+
+@media(max-width:960px){
+  nav{padding:0 22px;}
+  .hamburger{display:flex;}
+  .nav-menu{display:none;position:absolute;top:88px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:12px 0 20px;border-bottom:1px solid var(--warm-gray);box-shadow:0 8px 20px rgba(0,0,0,.06);}
+  .nav-menu.open{display:flex;}
+  .nav-menu li a{padding:13px 26px;font-size:13.5px;}
+  .nav-cta{margin:10px 26px 0!important;text-align:center;display:block!important;padding:13px 22px!important;}
+  .intro-band{grid-template-columns:1fr;}
+  .intro-portrait{max-height:320px;}
+  .intro-text{padding:44px 24px;}
+  .movement{padding:52px 22px;}
+  .img-pair{grid-template-columns:1fr;}
+  .img-full{height:240px;}
+  .origin{padding:52px 24px;}
+  .testimonials{padding:52px 22px;}
+  .testimonials-grid,.testimonials-grid.three{grid-template-columns:1fr;}
+  .press{padding:52px 22px;}
+  .press-item{flex-direction:column;gap:6px;}
+  .footer-top{grid-template-columns:1fr;padding:36px 24px;gap:32px;}
+  .footer-mid{border:none;border-top:1px solid var(--warm-gray);border-bottom:1px solid var(--warm-gray);padding:32px 0;}
+  .footer-right{padding-left:0;}
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-nav">
+    <img src="assets/images/spl-mark-clean-v2.png" alt="Subtext Performance Lab">
+  </a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navmenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="for-actors.html">Actors</a></li>
+    <li><a href="for-teams.html">Leaders &amp; Teams</a></li>
+    <li class="active"><a href="about.html">About</a></li>
+    <li><a href="engage.html">Engage</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Before the Camera. Behind It.</h1>
+  <p class="sub">Pushpendra Singh — Founder, Subtext Performance Lab</p>
+</div>
+
+<!-- INTRO BAND -->
+<section class="intro-band">
+  <div class="intro-portrait">
+    <img src="assets/images/pushpendra-singh-at-berlin-international-film-fest-full.jpg" alt="Pushpendra Singh at Berlin International Film Festival">
+  </div>
+  <div class="intro-text">
+    <p class="intro-eyebrow">A Practice Forged at the Intersection of Cinema, Pedagogy and Somatic Discipline</p>
+    <p>Pushpendra Singh founded Subtext Performance Lab with a single belief — that presence is not a gift you are born with. It is a skill. And like all skills, it can be taught, deepened and transformed.</p>
+    <p>What follows is not a résumé. It is the story of a life that has moved between making films, acting in them, and teaching others to do both — and how that movement became the actual source of the method.</p>
+    <p>Three distinct worlds. One continuous practice.</p>
+  </div>
+</section>
+
+<!-- MOVEMENT 1: THE FILMMAKER -->
+<section class="movement">
+  <div class="movement-header">
+    <p class="movement-num">Movement One</p>
+    <h2 class="movement-title">The Filmmaker</h2>
+    <div class="movement-rule"></div>
+  </div>
+  <div class="movement-body">
+    <p>Pushpendra is an award-winning filmmaker whose work has premiered at some of the world's most prestigious festivals. His debut feature <strong>Lajwanti</strong> (2014) premiered at the Berlin International Film Festival. <strong>Ashwatthama</strong> (2017) won the Asian Cinema Fund and premiered in New Currents at the Busan International Film Festival. His creative documentary <strong>Pearl of the Desert</strong> (2019) screened in competition at the Mumbai Film Festival and at IDFA Amsterdam. His most recent feature, <strong>Laila Aur Satt Geet</strong>, premiered in the Encounters Competition at the Berlin International Film Festival in 2020, winning the <strong>NETPAC Award at Jeonju International Film Festival</strong> and <strong>Best Director at the Hong Kong International Film Festival</strong>. MoMA later curated a dedicated retrospective of his work as part of a season on Indian independent cinema.</p>
+    <p>He has served on juries at the International Documentary and Short Film Festival of Kerala, the Zabaikalsky International Film Festival in Russia and the Kashish Mumbai International Queer Film Festival, and on the selection jury for the NFDC Screenwriters Lab.</p>
+
+  </div>
+  <div class="img-pair" style="margin-top:44px;">
+    <div>
+      <img src="assets/images/pushpendra-singh-jury-idsffk-kerala.webp" alt="Pushpendra Singh on the jury at IDSFFK Kerala" style="width:100%;height:340px;object-fit:cover;object-position:center 30%;display:block;filter:brightness(.92) saturate(.88) contrast(1.04);">
+      <p class="img-caption">On the jury at the 16th International Documentary and Short Film Festival of Kerala (IDSFFK), 2024</p>
+    </div>
+    <div>
+      <img src="assets/images/pushpendra-singh-on-stage-at-moma-01.jpg" alt="Pushpendra Singh in conversation with La Frances Hui at MoMA" style="width:100%;height:340px;object-fit:cover;object-position:center 30%;display:block;filter:brightness(.9) saturate(.85) contrast(1.04);">
+      <p class="img-caption">Pushpendra in conversation with La Frances Hui of MoMA's Department of Film, following a screening of his film.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- MOVEMENT 2: THE ACTOR & COLLABORATOR -->
+<section class="movement alt">
+  <div class="movement-header">
+    <p class="movement-num">Movement Two</p>
+    <h2 class="movement-title">The Actor &amp; Collaborator</h2>
+    <div class="movement-rule"></div>
+  </div>
+
+  <!-- ORIGIN STORY -->
+  <div style="background:var(--cream);border-left:3px solid var(--rust);padding:28px 32px;margin-bottom:36px;max-width:720px;">
+    <p style="font-family:var(--serif);font-size:clamp(18px,2vw,22px);font-style:italic;line-height:1.55;color:var(--dark);">Subtext was a term Pushpendra had learned in training, the way most actors do — as theory. It was on the set of Qissa, standing in for Irrfan Khan, that he understood what it actually meant. He suggested a scene needed urgency. Irrfan's response stayed with him: <em style="font-style:normal;color:var(--rust);">keep the urgency outside, but inside, stay in full control. Slow down from within.</em> It was the first time the idea of playing one thing inside and another outside stopped being a concept and became something he could feel. That distinction, lived rather than taught, became the foundation of everything Subtext Performance Lab does today.</p>
+  </div>
+
+  <img class="img-full" src="assets/images/pushpendra-singh-standing-in-for-irrfan-khan-on-th.jpg" alt="Pushpendra Singh standing in for Irrfan Khan on the set of Qissa">
+  <p class="img-caption-full">BTS still of Irrfan Khan and Pushpendra Singh from Qissa, directed by Anup Singh. Photographed by Ankit Mehrotra.</p>
+
+  <div class="movement-body" style="margin-top:36px;">
+    <p>In 2011, he was selected for <strong>Berlinale Talents</strong> — the first Indian actor ever invited to the programme. There, he trained in a workshop on embodying character with <strong>Jean-Louis Rodrigue</strong>, the movement coach who worked with Leonardo DiCaprio on <em>J. Edgar</em>; in a hands-on workshop on acting in close-up with <strong>Jasmila Žbanić</strong> — who won the Golden Bear at Berlinale in 2006 and was later Oscar-nominated for <em>Quo Vadis, Aida?</em> — focused entirely on reacting in front of the camera; and in a session on script analysis with <strong>Alby James OBE</strong>, who continues to serve as a mentor and selection-jury member for the programme.</p>
+  </div>
+
+  <div class="movement-body" style="margin-top:36px;">
+    <p>On the workshop floor, he has shaped performances across some of Indian cinema's most distinctive productions — with <strong>Irrfan Khan, Golshifteh Farahani, Tillotama Shome, Sara Arjun, Tisca Chopra, Rasika Dugal, Vivek Gomber and Geetanjali Kulkarni</strong> — across films and series including <strong>Qissa</strong>, <strong>Song of the Scorpions</strong>, <strong>Sir</strong>, <strong>Stay</strong>, <strong>Class</strong>, <strong>Kohrra</strong> and the upcoming <strong>Don't Be Shy</strong>, produced by Alia Bhatt for Amazon Prime.</p>
+  </div>
+
+  <img class="img-full" src="assets/images/ftii-acting-graduates-workshop-internalization.jpg" alt="FTII acting graduates in a workshop on internalization and inner monologue" style="object-position:center top;">
+  <p class="img-caption-full">FTII acting graduates in a workshop on internalization and inner monologue, at Pushpendra's home.</p>
+</section>
+
+<!-- MOVEMENT 3: THE TEACHER -->
+<section class="movement">
+  <div class="movement-header">
+    <p class="movement-num">Movement Three</p>
+    <h2 class="movement-title">The Teacher</h2>
+    <div class="movement-rule"></div>
+  </div>
+  <div class="movement-body">
+    <p>Pushpendra served as <strong>Professor and Head of the Department of Screen Acting at the Film and Television Institute of India, Pune</strong>, and returned to making films. He continues to shape the next generation of Indian cinema as <strong>Visiting Faculty at FTII Pune, Satyajit Ray Film and Television Institute Kolkata, National Institute of Design Ahmedabad</strong> and <strong>Whistling Woods International Mumbai</strong>.</p>
+    <p>Before FTII, he worked with <strong>Imago Theatre</strong> and <strong>Imago Theatre-in-Education</strong> — Barry John's company, where the majority of his work with children took place — as well as <strong>Yellow Cat Theatre Company</strong>, founded by Sukhesh Arora, devising performances with children and with participants who were blind, deaf, non-verbal, or living with physical and neuromotor disabilities — an experience that gave his teaching its distinctly humane, inclusive and deeply sensitive foundation.</p>
+  </div>
+  <div class="img-pair">
+    <div>
+      <img src="assets/images/teaching-workshop-outdoor-garden.jpg" alt="Pushpendra leading a workshop on Directing Actors for FTII Film Direction students">
+      <p class="img-caption">Leading a workshop on Directing Actors for FTII Film Direction students</p>
+    </div>
+    <div>
+      <img src="assets/images/pushpendra-singh-workshop-srfti-kolkata.jpg" alt="Pushpendra teaching at SRFTI Kolkata">
+      <p class="img-caption">Teaching at the Satyajit Ray Film and Television Institute (SRFTI), Kolkata</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING LINE -->
+<div class="closing">
+  <p>Pushpendra doesn't just teach you how to act.<br>He teaches you how to be.</p>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div style="text-align:center;margin-bottom:0;">
+    <p style="font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;">From the Field</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(30px,3.2vw,43px);font-weight:300;color:var(--dark);margin-bottom:14px;">Voices from the Field</h2>
+    <div style="width:44px;height:2px;background:var(--rust);margin:0 auto;"></div>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <span class="mark">&ldquo;</span>
+      <p>Pushpendra Singh knows that moments pass, &amp; it is in their passing we make the choice to fold our grief in the concentrated buttoning of a shirt. Or we let it bloom in the tightening of lips. He knows that love can be both a caress on a wall as well as hands in the pocket. He is one of the few who can lead an actor away from the imitation of life to revelation of life. And if you want your performance to shatter all you believe about yourself &amp; humanity, there is no better guide than him.</p>
+      <p class="attr">Anup Singh — Director<br>Qissa &amp; Song of the Scorpions</p>
+    </div>
+    <div class="testimonial-card">
+      <span class="mark">&ldquo;</span>
+      <p>Pushpendra Singh has been conducting Acting workshops for the senior Direction students of Whistling Woods International since quite a few years. His background as a trained actor, his strong directorial abilities and his in-depth understanding of cinema make these workshops a pivotal learning experience for the students. Through theoretical discussions and intense exercises, he guides each student towards making a film at the end of the workshop. In these films the students bring in their newly learnt understanding of acting as a craft.</p>
+      <p class="attr">Abhijit Mazumdar — Head of Department, Direction<br>Whistling Woods International</p>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED PRESS -->
+<section class="press">
+  <div style="text-align:center;margin-bottom:0;">
+    <p style="font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;">Selected Press</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(30px,3.2vw,43px);font-weight:300;color:var(--dark);margin-bottom:14px;">In the Press</h2>
+    <div style="width:44px;height:2px;background:var(--rust);margin:0 auto;"></div>
+  </div>
+  <div class="press-list">
+    <div class="press-item">
+      <span class="pub">Frontline (The Hindu)</span>
+      <span class="desc">On the MoMA New York retrospective of Lajwanti and Laila Aur Satt Geet, with an interview with the filmmaker</span>
+      <a href="https://frontline.thehindu.com/arts-and-culture/cinema/pushpendra-singh-making-waves-with-indie-cinema/article66144038.ece" target="_blank" rel="noopener">Read →</a>
+    </div>
+    <div class="press-item">
+      <span class="pub">The Hollywood Reporter</span>
+      <span class="desc">Review of Laila Aur Satt Geet (The Shepherdess and the Seven Songs)</span>
+      <a href="https://www.hollywoodreporter.com/movies/movie-reviews/shepherdess-seven-songs-1282347/" target="_blank" rel="noopener">Read →</a>
+    </div>
+    <div class="press-item">
+      <span class="pub">Variety</span>
+      <span class="desc">After winning Hong Kong and Jeonju, Laila Aur Satt Geet heads to the Singapore International Film Festival</span>
+      <a href="https://variety.com/2020/film/news/shepherdess-and-the-seven-songs-singapore-film-festival-1234840282/" target="_blank" rel="noopener">Read →</a>
+    </div>
+    <div class="press-item">
+      <span class="pub">Variety</span>
+      <span class="desc">Full critical review — a feminist, film-noir tinged Indian folk tale with a finale audiences won't forget</span>
+      <a href="https://variety.com/2022/film/reviews/the-shepherdess-and-the-seven-songs-review-laila-aur-satt-geet-1235173335/" target="_blank" rel="noopener">Read →</a>
+    </div>
+    <div class="press-item">
+      <span class="pub">The Hindu</span>
+      <span class="desc">Ashwatthama — a deeply philosophical conversation on death, witnessed by a young boy named Ishvaku</span>
+      <a href="https://www.thehindu.com/entertainment/movies/ashwatthama-loving-losing-growing/article24770656.ece" target="_blank" rel="noopener">Read →</a>
+    </div>
+    <div class="press-item">
+      <span class="pub">Scroll.in</span>
+      <span class="desc">On Pearl of the Desert and its premiere at Mumbai Film Festival, headed to IDFA Amsterdam</span>
+      <a href="https://scroll.in/reel/941094/film-on-a-manganiyar-musician-traces-how-the-folk-tradition-survives-and-adapts-to-the-digital-age" target="_blank" rel="noopener">Read →</a>
+    </div>
+    <div class="press-item">
+      <span class="pub">Livemint</span>
+      <span class="desc">Jai Arjun Singh on Ashwatthama — an anti-narrative film about a young boy obsessed with narrative itself</span>
+      <a href="https://www.livemint.com/Leisure/F1nONTMj3lYKVXokCOSJoI/Ashwatthama-Where-myth-and-life-collide.html" target="_blank" rel="noopener">Read →</a>
+    </div>
+  </div>
+  <a href="https://www.imdb.com/name/nm3621376/" target="_blank" rel="noopener" class="imdb-link">View full filmography on IMDb →</a>
+</section>
+
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="assets/images/spl-wordmark-clean.png" alt="Subtext Performance Lab">
+      <p class="footer-tagline">Beyond Words. Beyond Surface.<br>Presence That Matters.</p>
+    </div>
+    <div class="footer-mid">
+      <p class="footer-mid-text">Ready to begin?</p>
+      <a href="contact.html" class="btn-solid">Get in Touch</a>
+    </div>
+    <div class="footer-right">
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>presence@subtextperformancelab.com</span>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Mumbai, India</span>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/subtextperformancelab" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com/subtextperformancelab" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://linkedin.com/in/pushpendra-singh-bbbb80415" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://youtube.com/@subtextperformancelab" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Subtext Performance Lab. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="legal.html#privacy">Privacy Policy</a>
+      <a href="legal.html#terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const ham = document.getElementById('ham');
+  const menu = document.getElementById('navmenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+</script>
+</body>
+</html>
