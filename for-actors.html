@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actors — Subtext Performance Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVBPPK7VHT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WVBPPK7VHT');
+  </script>
+  <!-- Umami Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f275b875-9386-4166-ad88-1d6c11a883c2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --rust:#9b4a1f; --rust-light:#c0612a; --dark:#1c1a18; --cream:#f4f0ea;
+  --warm-white:#ffffff; --warm-gray:#e6e1d8; --muted:#524e4a;
+  --serif:'Cormorant Garamond',serif; --sans:'Jost',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden;}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+
+.page-wrap{max-width:1440px;margin:0 auto;overflow:hidden;}
+nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--warm-gray);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:88px;}
+.logo-nav img{height:62px;width:auto;display:block;}
+.nav-menu{display:flex;align-items:center;list-style:none;gap:0;}
+.nav-menu li a{display:block;padding:0 16px;font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:var(--dark);transition:color .25s;}
+.nav-menu li a:hover,.nav-menu li.active a{color:var(--rust);}
+.nav-cta{background:var(--dark)!important;color:white!important;padding:11px 22px!important;letter-spacing:2px!important;transition:background .25s!important;}
+.nav-cta:hover{background:var(--rust)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--dark);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.page-hero{display:grid;grid-template-columns:1.05fr 0.95fr;min-height:480px;}
+.page-hero-left{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:64px 60px 64px 80px;}
+.page-hero-left .eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:16px;}
+.page-hero-left .page-title{font-family:var(--serif);font-size:clamp(37px,4.2vw,55px);font-weight:300;line-height:1.05;color:var(--dark);margin-bottom:20px;}
+.page-hero-left .rule{width:44px;height:2px;background:var(--rust);margin-bottom:26px;}
+.page-hero-left .page-intro-body{font-size:17px;font-weight:300;line-height:1.65;color:var(--muted);margin-bottom:14px;max-width:440px;}
+.page-hero-left .btn-solid{background:var(--dark);color:white;padding:15px 32px;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:2px solid var(--dark);transition:all .3s;display:inline-block;margin-top:14px;}
+.page-hero-left .btn-solid:hover{background:var(--rust);border-color:var(--rust);}
+.page-hero-right{overflow:hidden;position:relative;}
+.page-hero-right img{width:100%;height:100%;object-fit:cover;object-position:25% 27%;display:block;filter:brightness(.92) saturate(.9) contrast(1.05);}
+.page-hero-right .hero-credit{position:absolute;bottom:14px;right:18px;font-size:11px;letter-spacing:.5px;color:rgba(255,255,255,.9);background:rgba(28,26,24,.5);padding:6px 12px;font-style:italic;max-width:280px;text-align:right;line-height:1.3;}
+
+.section-block{padding:0 0 48px;}
+.section-hero-img{width:100%;height:380px;object-fit:cover;filter:brightness(.9) saturate(.88) contrast(1.04);display:block;}
+.img-wrap{position:relative;}
+.img-credit{position:absolute;bottom:14px;right:18px;font-size:11px;letter-spacing:.5px;color:rgba(255,255,255,.9);background:rgba(28,26,24,.5);padding:6px 12px;font-style:italic;max-width:280px;text-align:right;line-height:1.3;}
+.section-content{max-width:880px;margin:0 auto;padding:24px 40px 0;}
+.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;text-align:center;}
+.section-title{font-family:var(--serif);font-size:clamp(33px,3.6vw,47px);font-weight:300;color:var(--dark);margin-bottom:20px;text-align:center;}
+.section-rule{width:44px;height:2px;background:var(--rust);margin:0 auto 28px;}
+.section-body{font-size:17px;font-weight:300;line-height:1.65;color:var(--muted);margin-bottom:36px;}
+.section-body strong{color:var(--dark);font-weight:500;}
+
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;}
+.featured-block{background:var(--dark);padding:48px 52px;max-width:1000px;margin-left:auto;margin-right:auto;}
+.featured-block .section-eyebrow{color:#e8935a;text-align:left;}
+.featured-block .section-title{color:white;text-align:left;font-size:clamp(28px,3vw,37px);}
+.featured-block .section-rule{margin:18px 0 22px;}
+.featured-block p.body-text{font-size:17px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.88);max-width:880px;}
+.testimonial-card{background:var(--warm-white);border:1px solid var(--warm-gray);padding:30px 28px;}
+.testimonial-card .mark{font-family:var(--serif);font-size:45px;color:var(--rust);opacity:.4;line-height:.5;display:block;margin-bottom:12px;}
+.testimonial-card p{font-size:17px;font-weight:300;line-height:1.65;color:var(--muted);margin-bottom:16px;font-style:italic;}
+.testimonial-card .attr{font-size:14px;letter-spacing:.5px;color:var(--rust);font-weight:600;}
+
+.secondary-img{width:100%;height:280px;object-fit:cover;margin-top:36px;filter:brightness(.9) saturate(.88);}
+
+.divider-rule{max-width:880px;margin:0 auto;height:1px;background:var(--warm-gray);}
+
+/* METHOD TABS */
+.method{padding:80px 40px;background:var(--warm-white);}
+.tabs-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:0;max-width:1000px;margin-left:auto;margin-right:auto;}
+.tab-btn{background:var(--cream);border:1px solid var(--warm-gray);padding:11px 16px;font-size:11px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;cursor:pointer;color:var(--dark);transition:all .25s;font-family:var(--sans);}
+.tab-btn:hover{border-color:var(--rust);color:var(--rust);}
+.tab-btn.active{background:var(--dark);color:white;border-color:var(--dark);}
+.tab-panel{display:none;background:var(--cream);border:1px solid var(--warm-gray);max-width:1000px;margin:0 auto;padding:40px 44px;}
+.tab-panel.active{display:block;}
+.lens-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;}
+.lens-mechanic{font-family:var(--serif);font-size:23px;font-style:italic;color:var(--dark);margin-bottom:16px;}
+.tab-panel p{font-size:17px;font-weight:300;line-height:1.65;color:var(--muted);max-width:680px;}
+
+footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
+.footer-top{display:grid;grid-template-columns:1fr 1.3fr 1fr;padding:48px 60px;border-bottom:1px solid var(--warm-gray);}
+.footer-brand img{height:64px;width:auto;margin-bottom:14px;display:block;}
+.footer-tagline{font-size:15px;font-weight:300;line-height:1.6;color:var(--muted);}
+.footer-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-left:1px solid var(--warm-gray);border-right:1px solid var(--warm-gray);padding:0 36px;}
+.footer-mid-text{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--dark);margin-bottom:22px;}
+.btn-solid{background:var(--dark);color:white;padding:15px 32px;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:2px solid var(--dark);transition:all .3s;display:inline-block;}
+.btn-solid:hover{background:var(--rust);border-color:var(--rust);}
+.footer-right{padding-left:44px;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+.contact-row{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:300;color:var(--muted);line-height:1.4;}
+.contact-row svg{width:14px;height:14px;flex-shrink:0;margin-top:2px;stroke:var(--rust);fill:none;stroke-width:1.6;}
+.social-row{display:flex;gap:14px;margin-top:6px;}
+.social-row a{color:var(--dark);text-decoration:none;font-size:13px;letter-spacing:1px;border-bottom:1px solid transparent;transition:border-color .2s, color .2s;}
+.social-row a:hover{color:var(--rust);border-color:var(--rust);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 60px;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-size:13px;color:var(--muted);}
+.footer-links{display:flex;gap:22px;}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--rust);}
+
+@media(max-width:960px){
+  nav{padding:0 22px;}
+  .hamburger{display:flex;}
+  .nav-menu{display:none;position:absolute;top:88px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:12px 0 20px;border-bottom:1px solid var(--warm-gray);box-shadow:0 8px 20px rgba(0,0,0,.06);}
+  .nav-menu.open{display:flex;}
+  .nav-menu li a{padding:13px 26px;font-size:13.5px;}
+  .nav-cta{margin:10px 26px 0!important;text-align:center;display:block!important;padding:13px 22px!important;}
+  .page-hero{grid-template-columns:1fr;min-height:auto;}
+  .page-hero-left{padding:48px 24px;}
+  .page-hero-right{height:320px;}
+  .section-hero-img{height:240px;}
+  .section-content{padding:20px 22px 0;}
+  .testimonial-grid{grid-template-columns:1fr;}
+  .sofa-photo{height:auto!important;object-fit:contain!important;object-position:center center!important;background:var(--cream);max-height:300px;}
+  .method{padding:56px 18px;}
+  .tabs-nav{justify-content:flex-start;overflow-x:auto;}
+  .tab-panel{padding:30px 24px;}
+  .footer-top{grid-template-columns:1fr;padding:36px 24px;gap:32px;}
+  .footer-mid{border:none;border-top:1px solid var(--warm-gray);border-bottom:1px solid var(--warm-gray);padding:32px 0;}
+  .footer-right{padding-left:0;}
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-nav">
+    <img src="assets/images/spl-mark-clean-v2.png" alt="Subtext Performance Lab">
+  </a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navmenu">
+    <li><a href="index.html">Home</a></li>
+    <li class="active"><a href="for-actors.html">Actors</a></li>
+    <li><a href="for-teams.html">Leaders &amp; Teams</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="engage.html">Engage</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+<section class="page-hero">
+  <div class="page-hero-left">
+    <p class="eyebrow">Actors</p>
+    <h1 class="page-title">The Presence the<br>Camera Is Looking For</h1>
+    <div class="rule"></div>
+    <p class="page-intro-body">Three rooms, one practice. Whether the camera is rolling on a film set, an actor is preparing alone, or a child is discovering what it means to be seen, the work begins the same way: from the inside.</p>
+    <a href="contact.html" class="btn-solid">Get in Touch</a>
+  </div>
+  <div class="page-hero-right">
+    <img src="assets/images/ftii-mise-en-scene-exercise-02.jpg" alt="A mise-en-scène exercise still, an actor mid-performance" style="object-position:center 10%;">
+  </div>
+</section>
+
+<!-- PRODUCTION HOUSES -->
+<div class="img-wrap" style="border-top:6px solid var(--cream);">
+  <img class="section-hero-img" src="assets/images/golshifteh-shardul-irrfan-workshop-scorpions.jpg" alt="Golshifteh Farahani, Shardul Bhardwaj and Irrfan Khan in a workshop for Song of the Scorpions" style="height:480px;object-position:35% 19%;">
+  <p class="img-credit">Golshifteh Farahani, Shardul Bhardwaj and Irrfan Khan in a workshop for Song of the Scorpions</p>
+</div>
+<section style="background:var(--dark);padding:64px 80px;">
+  <div style="max-width:880px;margin:0 auto;">
+    <p style="font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#e8935a;margin-bottom:18px;line-height:1.3;">For Production Houses &amp; OTT</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(33px,3.6vw,47px);font-weight:300;color:white;margin-bottom:24px;line-height:1.1;">Workshop Your Cast.<br>Elevate Your Project.</h2>
+    <div style="width:44px;height:2px;background:var(--rust);margin-bottom:28px;"></div>
+    <p style="font-size:17px;font-weight:300;line-height:1.68;color:rgba(255,255,255,.88);margin-bottom:32px;">Pushpendra works both on set and in pre-production, bringing actors to a place of deep character readiness before the camera rolls. He has workshopped ensemble casts for Netflix's <strong style="color:white;font-weight:500;">Class</strong> and <strong style="color:white;font-weight:500;">Kohrra Season 1</strong>, for Anup Singh's <strong style="color:white;font-weight:500;">Qissa</strong> and <strong style="color:white;font-weight:500;">Song of the Scorpions</strong>, with Golshifteh Farahani and Irrfan Khan among the cast, for Rohena Gera's <strong style="color:white;font-weight:500;">Sir</strong> and the upcoming <strong style="color:white;font-weight:500;">Stay</strong>, for Abhijit Mazumdar's <strong style="color:white;font-weight:500;">Body</strong>, for which Manoj Sharma won Best Actor, and for the upcoming <strong style="color:white;font-weight:500;">Don't Be Shy</strong>, directed by Sreeti Mukerji and produced by Alia Bhatt for Amazon Prime. His work has shaped performances alongside Golshifteh Farahani, Tillotama Shome, Tisca Chopra, Rasika Dugal, Sara Arjun, Shashank Arora, Vivek Gomber and Geetanjali Kulkarni. The result is measurable: fewer takes, sharper performances and significantly reduced shoot days. In an industry where every day on set has a cost, this is not just artistic value, it is production value.</p>
+    <div class="img-wrap" style="margin-bottom:0;">
+      <img class="sofa-photo" src="assets/images/golshifteh-farahani-sara-arjun-workshop-song-of-the-scorpions.jpg" alt="Golshifteh Farahani and Sara Arjun in a workshop with Pushpendra for Song of the Scorpions" style="width:100%;height:420px;object-fit:cover;object-position:center 15%;display:block;filter:brightness(.88) saturate(.85) contrast(1.05);">
+      <p class="img-credit">Golshifteh Farahani and Sara Arjun in a workshop with Pushpendra for Song of the Scorpions</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE COACHING & INTENSIVE — combined section -->
+<section style="background:var(--cream);padding:64px 80px;border-top:1px solid var(--warm-gray);">
+  <div style="max-width:880px;margin:0 auto;">
+    <p style="font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:18px;line-height:1.3;">For Individual Actors</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(30px,3.2vw,44px);font-weight:300;color:var(--dark);margin-bottom:28px;line-height:1.15;">Trained by the World's Best.<br>Now Available to You.</h2>
+    <div style="width:44px;height:2px;background:var(--rust);margin-bottom:32px;"></div>
+    <p style="font-size:17px;font-weight:300;line-height:1.68;color:var(--muted);margin-bottom:22px;">Pushpendra trained as an actor at FTII — India's premier film school — and under Barry John, one of India's most influential theatre practitioners. Over the years he has trained in workshops with some of the world's leading practitioners: at Berlinale Talents — as the first Indian actor ever invited to the programme — with <strong>Jean-Louis Rodrigue</strong>, the movement coach who worked with Leonardo DiCaprio on <em>J. Edgar</em>; with <strong>Jasmila Žbanić</strong>, Golden Bear winner at Berlin and Oscar-nominated for <em>Quo Vadis, Aida?</em>, on acting in close-up; and with <strong>Alby James OBE</strong> on script analysis.</p>
+    <p style="font-size:17px;font-weight:300;line-height:1.68;color:var(--muted);margin-bottom:22px;">Decades of working as an actor, filmmaker and teacher have refined this into a process that consistently works — not borrowed from any single school, but tested across film sets, rehearsal rooms and training sessions worldwide.</p>
+    <p style="font-size:17px;font-weight:300;line-height:1.68;color:var(--muted);margin-bottom:36px;">That process — applied entirely to one actor and one performance — is available as private, confidential coaching. Whether you are beginning your journey or preparing for a specific role, the work is built entirely around where you are and what you need.</p>
+    <a href="contact.html" class="btn-solid" style="margin-bottom:52px;display:inline-block;">Get in Touch</a>
+
+    <div style="border-top:1px solid var(--warm-gray);padding-top:44px;margin-top:8px;">
+      <p style="font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);font-weight:400;color:var(--dark);margin-bottom:16px;line-height:1.2;">The 4-Week Intensive</p>
+      <div style="width:32px;height:2px;background:var(--rust);margin-bottom:22px;"></div>
+      <p style="font-size:17px;font-weight:300;line-height:1.68;color:var(--muted);margin-bottom:18px;">When a small group of committed actors — between 10 and 20 — comes together, Pushpendra offers a structured 4-week intensive. Five days a week. Building from somatic awareness and truthful behaviour through character discovery to full scene performance. Whether you are beginning your acting journey or already working professionally, the intensive is designed to strengthen your process, deepen your awareness and expand your range.</p>
+      <p style="font-family:var(--serif);font-size:17px;font-style:italic;font-weight:300;line-height:1.6;color:var(--muted);">The next intensive forms when the group is ready. Write to us if you're interested.</p>
+    </div>
+  </div>
+</section>
+
+<section class="method">
+  <div style="text-align:center;max-width:680px;margin:0 auto 40px;">
+    <p class="section-eyebrow">The Seven Pillars of Our Training</p>
+    <h2 class="section-title" style="font-size:clamp(30px,3.2vw,41px);">A State of Flow, Earned Through Practice</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="tabs-nav" id="tabsNav">
+    <button class="tab-btn active" data-tab="0">Calm Under Pressure</button>
+    <button class="tab-btn" data-tab="1">The Mask and the Truth</button>
+    <button class="tab-btn" data-tab="2">Find Your Voice</button>
+    <button class="tab-btn" data-tab="3">Adapt Fluidly</button>
+    <button class="tab-btn" data-tab="4">Decoding the Text</button>
+    <button class="tab-btn" data-tab="5">Own the Room</button>
+    <button class="tab-btn" data-tab="6">Navigate the Space</button>
+  </div>
+
+  <div class="tab-panel active" data-panel="0">
+    <p class="lens-label">Core Mechanics</p>
+    <p class="lens-mechanic">Somatic Anchoring</p>
+    <p>Grounding and centering work begins the process, followed by breath and somatic awareness. Actors learn to scan their own bodies, head to toe, noticing sensation without judgment — building the ability to consciously command focus into the body rather than letting it react separately from the mind. The goal is a body that adapts on cue to what a scene demands, not one that betrays the actor with its own unconscious habits.</p>
+  </div>
+  <div class="tab-panel" data-panel="1">
+    <p class="lens-label">Core Mechanics</p>
+    <p class="lens-mechanic">Internal Monologue</p>
+    <p>Every character wears a mask — the version of themselves they choose to show. Using mask work and improvisation, actors learn to play the contradiction between what a character performs outwardly and what their internal monologue is actually saying underneath. A character can be calm on the surface while their inner voice is in crisis — and it is that exact friction, held and played simultaneously, that the camera reads as truth.</p>
+  </div>
+  <div class="tab-panel" data-panel="2">
+    <p class="lens-label">Core Mechanics</p>
+    <p class="lens-mechanic">Vocal Resonance</p>
+    <p>A close-up reveals the hidden lies, and it is first reflected in the projected voice. Modern, high-definition microphones can catch the slightest of whispers, removing any need to project or push the voice. Through diaphragmatic breathing and an awareness of the body's natural resonators, actors learn to drop forced theatrical projection and find a grounded, intimate vocal quality that conveys absolute psychological truth on screen.</p>
+  </div>
+  <div class="tab-panel" data-panel="3">
+    <p class="lens-label">Core Mechanics</p>
+    <p class="lens-mechanic">Applied Agility &amp; Behaviour</p>
+    <p>Film is a director's medium, and an actor who can only work one way will struggle. Through advanced improvisation, status work and animal exercises, actors build the range to adapt to different directorial styles and characterisations — learning to move like a chameleon between worlds, rather than performing the same instrument in every room.</p>
+  </div>
+  <div class="tab-panel" data-panel="4">
+    <p class="lens-label">Core Mechanics</p>
+    <p class="lens-mechanic">Approaching a Screenplay</p>
+    <p>Before an actor says a single line, there is work to be done. This module trains actors to decode a script in full — genre, theme, the world the story inhabits, a character's background, their wants, and the obstacles and urgency standing in their way. At the centre of it all sits relationship: between characters, and between a character and the space they occupy. Within this larger discipline lies a lesson Pushpendra learned firsthand from Irrfan Khan on the set of Qissa — that a character's internal need and their external want are rarely the same thing, and finding that gap is where a performance stops being acted and starts being lived.</p>
+  </div>
+  <div class="tab-panel" data-panel="5">
+    <p class="lens-label">Core Mechanics</p>
+    <p class="lens-mechanic">Sculpting the Frame</p>
+    <p>Actors learn to think like painters, photographers and sculptors, understanding how a figure occupies space, holds weight, and creates dynamic tension within a frame. Moving beyond simply hitting a mark, this module teaches you to compose your own presence on screen.</p>
+  </div>
+  <div class="tab-panel" data-panel="6">
+    <p class="lens-label">Core Mechanics</p>
+    <p class="lens-mechanic">Business of Acting &amp; Casting</p>
+    <p>Actors learn the craft of blocking and framing, and adapt their performance according to the camera lens — understanding what the camera can and cannot see. The module closes with the business of acting itself: how casting actually works, and what it takes to navigate that world as a working professional.</p>
+  </div>
+</section>
+
+<!-- KIDS & PARENTS -->
+<section class="section-block" style="padding-top:16px;">
+  <img class="section-hero-img" src="assets/images/children-performing-on-stage.jpg" alt="Children performing on stage" style="object-position:center 10%;">
+  <div class="section-content">
+    <p class="section-eyebrow">For Kids &amp; Parents</p>
+    <h2 class="section-title">Where Young Performers<br>Find Their Voice</h2>
+    <div class="section-rule"></div>
+    <p class="section-body">Acting training for children is not about making them perform, it is about helping them discover themselves.</p>
+    <p class="section-body">Drawing from his years with Imago Theatre, Imago Theatre-in-Education — Barry John's company — and Yellow Cat Theatre Company, founded by Sukhesh Arora, Pushpendra brings a uniquely sensitive, inclusive and joyful approach to training young performers. His work has included children and participants who were blind, deaf, non-verbal, or living with physical and neuromotor disabilities.</p>
+    <p class="section-body">The training is built specifically for screen — films, OTT and other image media — alongside organic, game-based exploration. Safe, nurturing and deeply professional.</p>
+    <p class="section-body">Pushpendra takes on children's coaching selectively — in collaboration with filmmakers and production houses working with young performers, and with theatre groups and educators looking to introduce children to screen.</p>
+    <img class="secondary-img" src="assets/images/children-in-dramatic-performance.jpg" alt="Children in dramatic performance" style="object-position:center 19%;">
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--warm-white);padding:72px 80px;border-top:1px solid var(--warm-gray);">
+  <div style="text-align:center;margin-bottom:48px;">
+    <p style="font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;line-height:1.3;">From the Directors</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(26px,2.8vw,38px);font-weight:300;color:var(--dark);margin-bottom:14px;line-height:1.2;">From Those Who Know the Work</h2>
+    <div style="width:44px;height:2px;background:var(--rust);margin:0 auto;"></div>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <span class="mark">&ldquo;</span>
+      <p>Pushpendra is an extremely generous and perceptive acting coach, constantly adapting his process to the film and the actors he is working with. He has been a tremendous support to me through the process of casting, as well as later helping actors delve deeper into their characters and build their relationships.</p>
+      <p class="attr">Rohena Gera — Director<br>Sir &amp; the upcoming Stay</p>
+    </div>
+    <div class="testimonial-card">
+      <span class="mark">&ldquo;</span>
+      <p>The workshop was instrumental in breaking down the barriers of being strangers on set, they began to feel like a real part of this lived in world. I specifically asked him to focus the actors on physical and emotional work, rather than memorizing lines, and this allowed them to inhabit their roles with a deeper comfort and confidence, especially important since the cast was so diverse, from the UK to Bombay to rural Punjab, even with some non actors. Moreover, I must mention Pushpendra Singh, the workshop director, whose approach was truly unique. He consistently introduced new techniques and fresh grammar into workshops, helping the actors understand the world from deep within rather than relying on old props.</p>
+      <p class="attr">Randeep Jha — Director<br>Kohrra Season 1 (Netflix)</p>
+    </div>
+    <div class="testimonial-card">
+      <span class="mark">&ldquo;</span>
+      <p>All of them are FTII Acting alumni, and they trained under Pushpendra more than ten years back when they were students. As an acting teacher, Pushpendra had already helped shape their strong acting cores. Bit by bit he helped the actors strip away everything extraneous and reach the core essence of their roles. What helped the actors and the film the most was his process of rehearsals with the actors in almost all the locations during recce.</p>
+      <p class="attr">Abhijit Mazumdar — Director, Body</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- end page-wrap -->
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="assets/images/spl-wordmark-clean.png" alt="Subtext Performance Lab">
+      <p class="footer-tagline">Beyond Words. Beyond Surface.<br>Presence That Matters.</p>
+    </div>
+    <div class="footer-mid">
+      <p class="footer-mid-text">Ready to begin?</p>
+      <a href="contact.html" class="btn-solid">Get in Touch</a>
+    </div>
+    <div class="footer-right">
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>presence@subtextperformancelab.com</span>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Mumbai, India</span>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/subtextperformancelab" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com/subtextperformancelab" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://linkedin.com/in/pushpendra-singh-bbbb80415" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://youtube.com/@subtextperformancelab" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Subtext Performance Lab. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="legal.html#privacy">Privacy Policy</a>
+      <a href="legal.html#terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const ham = document.getElementById('ham');
+  const menu = document.getElementById('navmenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.getAttribute('data-tab');
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector(`.tab-panel[data-panel="${idx}"]`).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
