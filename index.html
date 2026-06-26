@@ -1,81 +1,420 @@
-￼
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subtext Performance Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVBPPK7VHT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WVBPPK7VHT');
+  </script>
+  <!-- Umami Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f275b875-9386-4166-ad88-1d6c11a883c2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --rust:#9b4a1f; --rust-light:#c0612a; --dark:#1c1a18; --cream:#f4f0ea;
+  --warm-white:#ffffff; --warm-gray:#e6e1d8; --muted:#524e4a;
+  --serif:'Cormorant Garamond',serif; --sans:'Jost',sans-serif;
+  --page-max:1440px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden;}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
 
+/* PAGE WRAPPER */
+.page-wrap{max-width:var(--page-max);margin:0 auto;}
 
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--cream);box-shadow:0 1px 0 var(--warm-gray);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:88px;}
+.logo-nav img{height:62px;width:auto;display:block;}
+.nav-menu{display:flex;align-items:center;list-style:none;gap:0;}
+.nav-menu li a{display:block;padding:0 16px;font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:var(--dark);transition:color .25s;}
+.nav-menu li a:hover,.nav-menu li.active a{color:var(--rust);}
+.nav-cta{background:var(--dark)!important;color:white!important;padding:11px 22px!important;letter-spacing:2px!important;transition:background .25s!important;}
+.nav-cta:hover{background:var(--rust)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--dark);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-Subtext Performance Lab
-Beyond Words. Beyond Surface. Presence That Matters.
-The training that teaches you to command attention — and hold it.
+/* ── SECTION 1: HERO ──
+   88vh so the very top of Two Doors peeks below — natural scroll cue */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:560px;max-height:88vh;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:space-between;padding:52px 60px 52px 80px;}
 
-Led by Pushpendra Singh — Former Head of Screen Acting, FTII. Winner, Best Director, Hong Kong International Film Festival.
-GET IN TOUCH
-￼
-FOR ACTORS
-A process that unravels the truth.
+/* Brand identity block — given weight and space */
+.hero-identity{margin-bottom:0;}
+.hero-name{font-family:var(--serif);font-size:clamp(32px,2.8vw,36px);font-weight:500;color:var(--rust);margin-bottom:12px;line-height:1.2;letter-spacing:.5px;}
+.hero-tagline{font-family:var(--serif);font-size:clamp(16px,1.6vw,20px);font-style:italic;font-weight:400;color:var(--muted);line-height:1.4;}
 
-From beginners to working professionals — individual training, project-based coaching and full production workshops for film and OTT.
-EXPLORE FOR ACTORS → 
-FOR LEADERS & TEAMS
-A presence that earns respect.
+/* Hook block */
+.hero-hook{display:flex;flex-direction:column;}
+.hero-title{font-family:var(--serif);font-size:clamp(28px,3vw,42px);font-weight:400;line-height:1.18;color:var(--dark);margin-bottom:20px;}
+.rule{width:44px;height:2px;background:var(--rust);margin-bottom:20px;}
+.hero-lead{font-family:var(--serif);font-size:clamp(15px,1.3vw,17px);font-style:italic;font-weight:300;line-height:1.62;color:var(--muted);margin-bottom:28px;}
+.hero-lead strong{font-style:normal;font-weight:500;color:var(--dark);}
+.btn-solid{background:var(--dark);color:white;padding:15px 34px;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:2px solid var(--dark);transition:all .3s;display:inline-block;line-height:1;}
+.hero-left .btn-solid{align-self:flex-start;}
+.btn-solid:hover{background:var(--rust);border-color:var(--rust);}
 
-One-on-one executive coaching and full team workshops — built around real performance under pressure, not theory.
-EXPLORE FOR LEADERS & TEAMS → 
-￼
-THE FOUNDER
-His latest film, Laila Aur Satt Geet, was selected — nominated for Best Film and Best Director — at the Encounters Competition, Berlin International Film Festival.
-Trained at FTII. Headed its Screen Acting department. Has workshopped ensemble casts for Netflix's Kohrra and Class, and for films with Irrfan Khan, Golshifteh Farahani, Tillotama Shome, Sara Arjun, Tisca Chopra and Rasika Dugal. Directors call him before shoots begin. Executives call him before high-stakes moments.
-ABOUT PUSHPENDRA →
-THE SEVEN PILLARS OF OUR TRAINING
-One Methodology. Two Worlds.
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;filter:brightness(.92) saturate(.92) contrast(1.05);transition:transform 7s ease;}
+.hero-right:hover img{transform:scale(1.03);}
 
-01
-Calm Under Pressure
-02
-The Mask and the Truth
-03
-Find Your Voice
-04
-Adapt Fluidly
-05
-Reading the Room
-06
-Own the Room
-07
-Navigate the Space
-SEE HOW THIS WORKS FOR ACTORS →
-SEE HOW THIS WORKS FOR LEADERS & TEAMS →
-￼
-Irrfan Khan in one of his many conversations with Pushpendra on acting, during the making of Qissa.
-FROM THE PEOPLE WHO'VE WORKED WITH PUSHPENDRA
-Directors. Producers. Casting directors. The people who see what the work produces.
-“
-Having worked with Pushpendra on projects including Qissa, Song of the Scorpions, Sir, Class and Stay, I have seen his deep understanding of the actor's craft and creative process. His workshops and on-set work help actors arrive prepared and emotionally ready, saving valuable shooting time.
-Rakesh Mehra — Executive Producer including Qissa, Sir, Class (Netflix) and international co-productions
-“
-For CLA$$, we cast a large ensemble of mostly non-actors from very different backgrounds. Pushpendra's work was instrumental in helping them find emotional truth, confidence, and a shared performance language. Watching this young talent grow over the course of the process was incredible.
-Ashim Ahluwalia — Creator, Class (Netflix) Director, Miss Lovely · Daddy
-“
-What I particularly value is his approach to scene work and text analysis. His ability to break down a scene, uncover its underlying dynamics, and guide actors towards the right approach provides invaluable insight, whether preparing for an audition or performing on set. He teaches actors not just what to do, but how to think about a scene and build a process around their work.
-Vaibhav Vishant — Casting Director Anti-Casting
-“He is one of the few who can lead an actor away from the imitation of life to revelation of life.”
-ANUP SINGH  ·  DIRECTOR, QISSA & SONG OF THE SCORPIONS
-￼
-Beyond Words. Beyond Surface. Presence That Matters.
-Ready to begin?
-GET IN TOUCH
+/* ── SECTION 2: TWO DOORS ── */
+.doors{display:grid;grid-template-columns:1fr 1fr;background:var(--warm-white);}
+.door-panel{padding:72px 56px;}
+.door-panel:first-child{border-right:1px solid var(--warm-gray);}
+.door-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;line-height:1.3;}
+.door-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:300;font-style:italic;line-height:1.15;color:var(--dark);margin-bottom:20px;}
+.door-rule{width:32px;height:2px;background:var(--rust);margin-bottom:20px;}
+.door-body{font-size:17px;font-weight:300;line-height:1.62;color:var(--muted);margin-bottom:32px;max-width:360px;}
+.btn-outline-rust{display:inline-block;padding:13px 28px;border:1.5px solid var(--rust);color:var(--rust);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;line-height:1;}
+.btn-outline-rust:hover{background:var(--rust);color:white;}
 
-presence@subtextperformancelab.com
+/* ── SECTION 3: FOUNDER ── */
+.founder{display:grid;grid-template-columns:1fr 1fr;background:var(--dark);}
+.founder-img{overflow:hidden;min-height:500px;}
+.founder-img img{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;filter:brightness(.82) saturate(.88) contrast(1.05);}
+.founder-text{display:flex;flex-direction:column;justify-content:center;padding:68px 68px;}
+.founder-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#e8935a;margin-bottom:20px;line-height:1.3;}
+.founder-cred{margin-bottom:28px;padding-left:20px;border-left:2px solid var(--rust);}
+.founder-cred p{font-family:var(--serif);font-size:17px;font-style:italic;font-weight:300;color:rgba(255,255,255,.88);line-height:1.58;}
+.founder-body{font-size:17px;font-weight:300;line-height:1.68;color:rgba(255,255,255,.92);margin-bottom:36px;}
+.founder-body strong{color:white;font-weight:500;}
+.btn-ghost{display:inline-block;padding:13px 28px;border:1.5px solid rgba(255,255,255,.5);color:rgba(255,255,255,.82);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;line-height:1;}
+.btn-ghost:hover{border-color:white;color:white;}
 
-Mumbai, India
-Instagram
-Facebook
-LinkedIn
-YouTube
-© 2026 Subtext Performance Lab. All rights reserved.
-Privacy Policy
-Terms & Conditions
-HOME
-ACTORS
-LEADERS & TEAMS
-ABOUT
-ENGAGE
-CONTACT
+/* ── SECTION 4: METHOD ── */
+.method{padding:64px 80px;background:var(--cream);}
+.method-head{text-align:center;margin-bottom:36px;}
+.method-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:12px;line-height:1.3;}
+.method-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:300;color:var(--dark);margin-bottom:12px;line-height:1.2;}
+.method-rule{width:44px;height:2px;background:var(--rust);margin:0 auto;}
+.pillar-list{max-width:680px;margin:0 auto 36px;}
+.pillar-item{display:flex;align-items:baseline;gap:20px;padding:10px 0;border-bottom:1px solid var(--warm-gray);}
+.pillar-item:last-child{border-bottom:none;}
+.pillar-num{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--rust);flex-shrink:0;width:24px;line-height:1;}
+.pillar-name{font-family:var(--serif);font-size:22px;font-weight:400;font-style:italic;color:var(--dark);line-height:1.2;}
+.method-ctas{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.btn-outline{display:inline-block;padding:13px 26px;border:1.5px solid var(--dark);color:var(--dark);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;line-height:1;}
+.btn-outline:hover{background:var(--dark);color:white;}
+
+/* ── SECTION 5: IRRFAN ── */
+.irrfan{position:relative;overflow:hidden;}
+.irrfan img{width:100%;height:460px;object-fit:cover;object-position:center 15%;display:block;filter:brightness(.65) saturate(.78) contrast(1.1);}
+.irrfan-caption{position:absolute;bottom:0;left:0;right:0;padding:56px 80px 36px;background:linear-gradient(to top,rgba(20,18,16,.88) 55%,transparent);}
+.irrfan-caption p{font-family:var(--serif);font-size:19px;font-style:italic;color:rgba(244,240,234,.9);line-height:1.55;max-width:700px;}
+
+/* ── SECTION 6: PROOF ── */
+.proof{background:var(--cream);padding:80px 80px;}
+.proof-intro{text-align:center;margin-bottom:48px;}
+.proof-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:12px;line-height:1.3;}
+.proof-intro-line{font-family:var(--serif);font-size:clamp(18px,1.7vw,22px);font-weight:300;font-style:italic;color:var(--muted);line-height:1.5;}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.proof-card{background:var(--warm-white);border:1px solid var(--warm-gray);padding:36px 32px;}
+.proof-mark{font-family:var(--serif);font-size:52px;color:var(--rust);opacity:.35;line-height:.5;display:block;margin-bottom:18px;}
+.proof-quote{font-family:var(--serif);font-size:17px;font-style:italic;font-weight:300;line-height:1.65;color:var(--dark);margin-bottom:24px;}
+.proof-attr{font-size:14px;font-weight:600;letter-spacing:.5px;color:var(--rust);line-height:1.55;}
+
+/* ── SECTION 7: ANUP LINE ── */
+.anup{background:var(--dark);padding:88px 80px;text-align:center;}
+.anup-quote{font-family:var(--serif);font-size:clamp(22px,2.4vw,32px);font-weight:300;font-style:italic;line-height:1.45;color:#f4f0ea;max-width:800px;margin:0 auto 28px;}
+.anup-attr{font-size:14px;font-weight:500;letter-spacing:1.5px;color:#e8aa6e;text-transform:uppercase;line-height:1.3;}
+
+/* FOOTER */
+footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
+.footer-top{display:grid;grid-template-columns:1fr 1.3fr 1fr;padding:52px 80px;border-bottom:1px solid var(--warm-gray);}
+.footer-brand img{height:64px;width:auto;margin-bottom:14px;display:block;}
+.footer-tagline{font-size:15px;font-weight:300;line-height:1.6;color:var(--muted);}
+.footer-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-left:1px solid var(--warm-gray);border-right:1px solid var(--warm-gray);padding:0 36px;}
+.footer-mid-text{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--dark);margin-bottom:22px;line-height:1.25;}
+.footer-right{padding-left:44px;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.contact-row{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:300;color:var(--muted);line-height:1.4;}
+.contact-row svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;stroke:var(--rust);fill:none;stroke-width:1.6;}
+.social-row{display:flex;gap:16px;margin-top:4px;flex-wrap:wrap;}
+.social-row a{color:var(--dark);text-decoration:none;font-size:13px;letter-spacing:1px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
+.social-row a:hover{color:var(--rust);border-color:var(--rust);}
+.footer-sitemap{display:none;text-align:center;padding:12px 24px 20px;border-top:1px solid var(--warm-gray);flex-wrap:wrap;gap:12px;justify-content:center;}
+.footer-sitemap a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;font-weight:500;}
+.footer-sitemap a:hover{color:var(--rust);}
+@media(max-width:960px){.footer-sitemap{display:flex;}}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 80px;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-size:13px;color:var(--muted);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--rust);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.hero-identity{animation:fadeUp .6s ease .06s both;}
+.hero-title{animation:fadeUp .6s ease .18s both;}
+.rule{animation:fadeUp .6s ease .28s both;}
+.hero-lead{animation:fadeUp .6s ease .36s both;}
+.btn-solid{animation:fadeUp .6s ease .44s both;}
+
+/* MOBILE */
+@media(max-width:960px){
+  nav{padding:0 22px;}
+  .hamburger{display:flex;}
+  .nav-menu{display:none;position:absolute;top:88px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:12px 0 20px;border-bottom:1px solid var(--warm-gray);box-shadow:0 8px 20px rgba(0,0,0,.06);}
+  .nav-menu.open{display:flex;}
+  .nav-menu li a{padding:13px 26px;font-size:14px;}
+  .nav-cta{margin:10px 26px 0!important;text-align:center;display:block!important;padding:13px 22px!important;}
+  .hero{grid-template-columns:1fr;min-height:auto;max-height:none;}
+  .hero-left{padding:36px 24px 32px;}
+  .hero-identity{margin-bottom:28px;padding-bottom:24px;}
+  .hero-tagline{font-size:20px;}
+  .hero-title{margin-top:24px;}
+  .btn-solid{align-self:auto;width:100%;text-align:center;}
+  .hero-right{height:280px;}
+  .doors{grid-template-columns:1fr;}
+  .door-panel:first-child{border-right:none;border-bottom:1px solid var(--warm-gray);}
+  .door-panel{padding:48px 24px 52px;}
+  .founder{grid-template-columns:1fr;}
+  .founder-img{min-height:260px;}
+  .founder-text{padding:44px 24px;}
+  .method{padding:52px 22px;}
+  .pillar-list{max-width:100%;}
+  .method-ctas{flex-direction:column;align-items:stretch;}
+  .method-ctas .btn-outline{text-align:center;}
+  .irrfan img{height:300px;}
+  .irrfan-caption{padding:36px 24px 24px;}
+  .irrfan-caption p{font-size:16px;}
+  .proof{padding:52px 22px;}
+  .proof-grid{grid-template-columns:1fr;gap:20px;}
+  .anup{padding:64px 24px;}
+  .footer-top{grid-template-columns:1fr;padding:36px 24px;gap:32px;}
+  .footer-mid{border:none;border-top:1px solid var(--warm-gray);border-bottom:1px solid var(--warm-gray);padding:32px 0;}
+  .footer-right{padding-left:0;}
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-nav">
+    <img src="assets/images/spl-mark-clean-v2.png" alt="Subtext Performance Lab">
+  </a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navmenu">
+    <li class="active"><a href="index.html">Home</a></li>
+    <li><a href="for-actors.html">Actors</a></li>
+    <li><a href="for-teams.html">Leaders &amp; Teams</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="engage.html">Engage</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+<!-- SECTION 1: HERO -->
+<section class="hero">
+  <div class="hero-left">
+
+    <!-- Identity block: name + tagline, pinned to top -->
+    <div class="hero-identity">
+      <p class="hero-name">Subtext Performance Lab</p>
+      <p class="hero-tagline">Beyond Words. Beyond Surface. Presence That Matters.</p>
+    </div>
+
+    <!-- Hook block: pushed to bottom via space-between -->
+    <div class="hero-hook">
+      <h1 class="hero-title">The training that teaches you to command attention — and hold it.</h1>
+      <div class="rule"></div>
+      <p class="hero-lead">Led by <strong>Pushpendra Singh</strong> — Former Head of Screen Acting, FTII. Winner, Best Director, Hong Kong International Film Festival.</p>
+      <a href="contact.html" class="btn-solid">Get in Touch</a>
+    </div>
+
+  </div>
+  <div class="hero-right">
+    <img src="assets/images/pushpendra-singh-founder-of-subtext-performance-la.jpg" alt="Pushpendra Singh, founder of Subtext Performance Lab">
+  </div>
+</section>
+
+<!-- SECTION 2: TWO DOORS -->
+<section class="doors">
+  <div class="door-panel">
+    <p class="door-eyebrow">For Actors</p>
+    <h2 class="door-title">A process that unravels the truth.</h2>
+    <div class="door-rule"></div>
+    <p class="door-body">From beginners to working professionals — individual training, project-based coaching and full production workshops for film and OTT.</p>
+    <a href="for-actors.html" class="btn-outline-rust">Explore for Actors →</a>
+  </div>
+  <div class="door-panel">
+    <p class="door-eyebrow">For Leaders &amp; Teams</p>
+    <h2 class="door-title">A presence that earns respect.</h2>
+    <div class="door-rule"></div>
+    <p class="door-body">One-on-one executive coaching and full team workshops — built around real performance under pressure, not theory.</p>
+    <a href="for-teams.html" class="btn-outline-rust">Explore for Leaders &amp; Teams →</a>
+  </div>
+</section>
+
+<!-- SECTION 3: FOUNDER -->
+<section class="founder">
+  <div class="founder-img">
+    <img src="assets/images/pushpendra-singh-on-set-arri-camera.jpg" alt="Pushpendra Singh on location for Ashwatthama">
+  </div>
+  <div class="founder-text">
+    <p class="founder-eyebrow">The Founder</p>
+    <div class="founder-cred">
+      <p>His latest film, Laila Aur Satt Geet, was selected — nominated for Best Film and Best Director — at the Encounters Competition, Berlin International Film Festival.</p>
+    </div>
+    <p class="founder-body">Trained at FTII. Headed its Screen Acting department. Has workshopped ensemble casts for <strong>Netflix's Kohrra and Class</strong>, and for films with <strong>Irrfan Khan, Golshifteh Farahani, Tillotama Shome, Sara Arjun, Tisca Chopra and Rasika Dugal</strong>. Directors call him before shoots begin. Executives call him before high-stakes moments.</p>
+    <a href="about.html" class="btn-ghost">About Pushpendra →</a>
+  </div>
+</section>
+
+<!-- SECTION 4: METHOD -->
+<section class="method">
+  <div class="method-head">
+    <p class="method-eyebrow">The Seven Pillars of Our Training</p>
+    <h2 class="method-title">One Methodology. Two Worlds.</h2>
+    <div class="method-rule"></div>
+  </div>
+  <div class="pillar-list">
+    <div class="pillar-item">
+      <span class="pillar-num">01</span>
+      <p class="pillar-name">Calm Under Pressure</p>
+    </div>
+    <div class="pillar-item">
+      <span class="pillar-num">02</span>
+      <p class="pillar-name">The Mask and the Truth</p>
+    </div>
+    <div class="pillar-item">
+      <span class="pillar-num">03</span>
+      <p class="pillar-name">Find Your Voice</p>
+    </div>
+    <div class="pillar-item">
+      <span class="pillar-num">04</span>
+      <p class="pillar-name">Adapt Fluidly</p>
+    </div>
+    <div class="pillar-item">
+      <span class="pillar-num">05</span>
+      <p class="pillar-name">Reading the Room</p>
+    </div>
+    <div class="pillar-item">
+      <span class="pillar-num">06</span>
+      <p class="pillar-name">Own the Room</p>
+    </div>
+    <div class="pillar-item">
+      <span class="pillar-num">07</span>
+      <p class="pillar-name">Navigate the Space</p>
+    </div>
+  </div>
+  <div class="method-ctas">
+    <a href="for-actors.html#method" class="btn-outline">See how this works for actors →</a>
+    <a href="for-teams.html#method" class="btn-outline">See how this works for leaders &amp; teams →</a>
+  </div>
+</section>
+
+<!-- SECTION 5: IRRFAN -->
+<section class="irrfan">
+  <img src="assets/images/irrfan-khan-and-pushpendra-singh-in-conversation.jpg" alt="Irrfan Khan in conversation with Pushpendra Singh during the making of Qissa">
+  <div class="irrfan-caption">
+    <p>Irrfan Khan in one of his many conversations with Pushpendra on acting, during the making of Qissa.</p>
+  </div>
+</section>
+
+<!-- SECTION 6: PROOF -->
+<section class="proof">
+  <div class="proof-intro">
+    <p class="proof-eyebrow">From the People Who've Worked with Pushpendra</p>
+    <p class="proof-intro-line">Directors. Producers. Casting directors.<br>The people who see what the work produces.</p>
+  </div>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <span class="proof-mark">&ldquo;</span>
+      <p class="proof-quote">Having worked with Pushpendra on projects including Qissa, Song of the Scorpions, Sir, Class and Stay, I have seen his deep understanding of the actor's craft and creative process. His workshops and on-set work help actors arrive prepared and emotionally ready, saving valuable shooting time.</p>
+      <p class="proof-attr">Rakesh Mehra — Executive Producer<br>including Qissa, Sir, Class (Netflix) and international co-productions</p>
+    </div>
+    <div class="proof-card">
+      <span class="proof-mark">&ldquo;</span>
+      <p class="proof-quote">For CLA$$, we cast a large ensemble of mostly non-actors from very different backgrounds. Pushpendra's work was instrumental in helping them find emotional truth, confidence, and a shared performance language. Watching this young talent grow over the course of the process was incredible.</p>
+      <p class="proof-attr">Ashim Ahluwalia — Creator, Class (Netflix)<br>Director, Miss Lovely · Daddy</p>
+    </div>
+    <div class="proof-card">
+      <span class="proof-mark">&ldquo;</span>
+      <p class="proof-quote">What I particularly value is his approach to scene work and text analysis. His ability to break down a scene, uncover its underlying dynamics, and guide actors towards the right approach provides invaluable insight, whether preparing for an audition or performing on set. He teaches actors not just what to do, but how to think about a scene and build a process around their work.</p>
+      <p class="proof-attr">Vaibhav Vishant — Casting Director<br>Anti-Casting</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: ANUP LINE -->
+<section class="anup">
+  <p class="anup-quote">&ldquo;He is one of the few who can lead an actor away from the imitation of life to revelation of life.&rdquo;</p>
+  <p class="anup-attr">Anup Singh &nbsp;·&nbsp; Director, Qissa &amp; Song of the Scorpions</p>
+</section>
+
+</div><!-- end page-wrap -->
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="assets/images/spl-wordmark-clean.png" alt="Subtext Performance Lab">
+      <p class="footer-tagline">Beyond Words. Beyond Surface.<br>Presence That Matters.</p>
+    </div>
+    <div class="footer-mid">
+      <p class="footer-mid-text">Ready to begin?</p>
+      <a href="contact.html" class="btn-solid">Get in Touch</a>
+    </div>
+    <div class="footer-right">
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>presence@subtextperformancelab.com</span>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Mumbai, India</span>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/subtextperformancelab" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com/subtextperformancelab" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://linkedin.com/in/pushpendra-singh-bbbb80415" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://youtube.com/@subtextperformancelab" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Subtext Performance Lab. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="legal.html#privacy">Privacy Policy</a>
+      <a href="legal.html#terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+  <div class="footer-sitemap">
+    <a href="index.html">Home</a>
+    <a href="for-actors.html">Actors</a>
+    <a href="for-teams.html">Leaders &amp; Teams</a>
+    <a href="about.html">About</a>
+    <a href="engage.html">Engage</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const ham = document.getElementById('ham');
+  const menu = document.getElementById('navmenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+</script>
+</body>
+</html>
