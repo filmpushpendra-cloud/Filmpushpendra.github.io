@@ -1,0 +1,44 @@
+{
+  "status": "LOCKED APPROVED HOMEPAGE; NOT DEPLOYED",
+  "source": "SPL_Architecture_Deployment_Package.zip extracted to audit_spl",
+  "changes": {
+    "index.html": "Approved headline: Presence that commands attention. / Depth that holds it. Depth uses existing h1 em oxblood accent; all else unchanged",
+    "engage.html": "upcoming workshops moved above offerings",
+    "for-actors.html": "YouTube iframe referrerpolicy added; HTTPS playback not verified",
+    "architecture-of-reaction.html": "unchanged from supplied deployment package"
+  },
+  "external_assets_existing_in_github_but_not_in_this_zip": [
+    "assets/images/ftii-acting-graduates-workshop-internalization.jpg",
+    "assets/images/pushpendra-singh-at-berlin-international-film-fest-full.jpg",
+    "assets/images/pushpendra-singh-at-vgik-moscow.jpg",
+    "assets/images/pushpendra-singh-in-conversation-about-his-film-at.jpg",
+    "assets/images/pushpendra-singh-jury-idsffk-kerala.webp",
+    "assets/images/pushpendra-singh-on-stage-at-moma-01.jpg",
+    "assets/images/pushpendra-singh-standing-in-for-irrfan-khan-on-th.jpg",
+    "assets/images/pushpendra-singh-workshop-srfti-kolkata.jpg",
+    "assets/images/teaching-workshop-outdoor-garden.jpg"
+  ],
+  "verification": "Byte-exact comparison: homepage differs only in two headline spans; all other source files and image assets checksum-identical to prior locked review. Browser rendering and live HTTPS not tested.",
+  "sha256": {
+    "for-actors.html": "47e979e4fe931648c9c221a62aa746acc88d9e749848019562a773294b3e7afe",
+    "for-teams.html": "16d1fbc6e43c5cd7a6cd767bc1aa065ebbfa5d55c321e8d5d31b0ac8121c8ebb",
+    "legal.html": "863dfee965549021c19b7b5acacd3f42d3dec287eaaa05db737db97c022b42bf",
+    "contact.html": "ef0d5f2c320cf52db16df9b257d69e39365af108b579936b522a8e4a78c02f12",
+    "index.html": "012b5f08edfe4e0a8781f5a77360daf0014a5b3df12d25036fd74c6fd9074356",
+    "architecture-of-reaction.html": "b78b2980c1e4e5793708628840a5c26750990b59790d0fd52ed574a4ac3d767d",
+    "about.html": "169a41fe6ef0ba96abe6f5c49d6e5e8acfa860216e3d802583b31c9b29373b2a",
+    "engage.html": "c4733417400dcec0efe4d9c3ff70ab041843c694eb7086fefacd883368daaf28",
+    "assets/images/spl-mark-oxblood.png": "067b13efe074b9c8c82f51dd678f714506e3401c731ada6c6daafbbbb08b1133",
+    "assets/images/golshifteh-shardul-irrfan-workshop-scorpions.jpg": "8331f48c9111c2cbcd8d48655debbae25efe755a9834fd800e6e63a8eddc5516",
+    "assets/images/irrfan-khan-and-pushpendra-singh-in-conversation.jpg": "0f34cfad8b3a639632142365a913edbe5e495ce5025dceec68842928cab05e3e",
+    "assets/images/golshifteh-farahani-sara-arjun-workshop-song-of-the-scorpions.jpg": "4556d90adea21b65ccd8eacb72d2bf356a7fce13808ceac06cce6ec063970d66",
+    "assets/images/architecture-of-reaction-hero.jpg": "091119a8a327eda82bda85a7cb7d811038ba54c4882c0a3ff859dd4830936512",
+    "assets/images/architecture-of-reaction-practice.jpg": "dbb62eb74fb307fa6c1fd5adc0dca7b2af82c7cfa97d19a8112b1d3c9fa692bc",
+    "assets/images/architecture-of-reaction-foundations.jpg": "2683bee9107c21eabad2c8778a717ac88eefbe367099b65e1b47e17f63b2beff",
+    "assets/images/ftii-mise-en-scene-exercise-02.jpg": "549a68cebd0a938a3145aa87f9266a362de133a569574ff39aa888b13903b029",
+    "assets/images/hero-portrait-4x5.jpg": "8a78024514bd7354f7a53473df8d67d98e06df966a41ac4e030a6bd49feb4329",
+    "assets/images/pushpendra-singh-on-set-arri-camera.jpg": "3845130cacbcfa24f972b6239645e87e6e217314e9dc5e90fac1dc19666ceddc",
+    "assets/images/spl-wordmark-oxblood.png": "78f6f753e34f42cbee35a49ad1af65f7e28325c3c04e77e8e6c4ade56d5601e3",
+    "assets/images/children-in-dramatic-performance.jpg": "bc59d818c0d87d746c1659cb6b4f4b3f0c3b0495efa4284c047b37d58df59251"
+  }
+}

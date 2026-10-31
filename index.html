@@ -6,7 +6,7 @@
 <title>Subtext Performance Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,540;1,9..144,340;1,9..144,400&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVBPPK7VHT"></script>
   <script>
@@ -20,184 +20,210 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --rust:#9b4a1f; --rust-light:#c0612a; --dark:#1c1a18; --cream:#f4f0ea;
-  --warm-white:#ffffff; --warm-gray:#e6e1d8; --muted:#524e4a;
-  --serif:'Cormorant Garamond',serif; --sans:'Jost',sans-serif;
-  --page-max:1440px;
+  --sage:#e8e7d8; --sage-ink:#1c1d14; --oxblood:#641e1a; --sage-muted:#5c5c4a; --sage-hairline:#cfceb8;
+  --bridge:#f1efe3; --parchment:#f7f5ec;
+  --white:#fbfaf7; --ink:#171512; --muted:#5a554d; --hairline:#e7e3da;
+  --display:'Fraunces',serif; --grotesk:'Schibsted Grotesk',sans-serif;
 }
 html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--cream);color:var(--dark);overflow-x:hidden;}
-:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+body{font-family:var(--grotesk);background:var(--white);color:var(--ink);overflow-x:hidden;}
+:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px;}
+img{display:block;max-width:100%;}
 
-/* PAGE WRAPPER */
-.page-wrap{max-width:var(--page-max);margin:0 auto;}
+/* ══ NAV ══ */
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 6vw;background:var(--sage);border-bottom:1px solid var(--sage-hairline);overflow:hidden;}
+.logo-nav img{height:54px;width:auto;display:block;}
+@keyframes logoRise{0%{transform:translateY(46px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
+.logo-nav img{animation:logoRise 1.7s cubic-bezier(.19,1,.22,1) .2s both;}
+.nav-links{display:flex;gap:34px;list-style:none;align-items:flex-start;}
+.nav-links a{display:block;text-decoration:none;color:var(--sage-ink);}
+.nav-links a:hover .nav-label{color:var(--oxblood);}
+.nav-num{display:block;font-size:10px;font-weight:500;letter-spacing:2px;color:var(--sage-muted);margin-bottom:3px;}
+.nav-label{display:block;font-size:12.5px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;transition:color .2s;}
+.nav-links a.cta{border:1px solid var(--sage-ink);padding:11px 20px;}
+.nav-links a.cta .nav-label{letter-spacing:2px;}
+.nav-links a.cta:hover{background:var(--sage-ink);}
+.nav-links a.cta:hover .nav-label{color:var(--sage);}
+.nav-trigger{display:none;align-items:center;gap:10px;background:transparent;border:1px solid var(--sage-ink);padding:10px 16px;cursor:pointer;font-family:var(--grotesk);color:var(--sage-ink);}
+.nav-trigger .mtxt{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;}
+.nav-trigger .bars{display:flex;flex-direction:column;gap:4px;}
+.nav-trigger .bars span{display:block;width:18px;height:1.5px;background:var(--sage-ink);transition:all .25s;}
+.nav-trigger.open .bars span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.nav-trigger.open .bars span:nth-child(2){opacity:0;}
+.nav-trigger.open .bars span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+.overlay{position:fixed;inset:0;background:var(--sage);z-index:300;display:none;flex-direction:column;justify-content:center;padding:0 8vw;}
+.overlay.open{display:flex;}
+.overlay-links{list-style:none;}
+.overlay-links li{border-bottom:1px solid var(--sage-hairline);}
+.overlay-links a{display:flex;align-items:baseline;gap:20px;padding:20px 0;text-decoration:none;color:var(--sage-ink);}
+.overlay-num{font-size:12px;letter-spacing:2px;color:var(--oxblood);width:26px;}
+.overlay-label{font-family:var(--display);font-size:clamp(28px,7vw,44px);font-weight:340;letter-spacing:-.5px;}
+.overlay-close{position:absolute;top:22px;right:6vw;background:transparent;border:1px solid var(--sage-ink);padding:10px 16px;font-family:var(--grotesk);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--sage-ink);cursor:pointer;}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:var(--cream);box-shadow:0 1px 0 var(--warm-gray);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:88px;}
-.logo-nav img{height:62px;width:auto;display:block;}
-.nav-menu{display:flex;align-items:center;list-style:none;gap:0;}
-.nav-menu li a{display:block;padding:0 16px;font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:var(--dark);transition:color .25s;}
-.nav-menu li a:hover,.nav-menu li.active a{color:var(--rust);}
-.nav-cta{background:var(--dark)!important;color:white!important;padding:11px 22px!important;letter-spacing:2px!important;transition:background .25s!important;}
-.nav-cta:hover{background:var(--rust)!important;}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--dark);transition:all .3s;}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+/* ══ HERO — true even mat ══ */
+.hero{display:grid;grid-template-columns:1.08fr .92fr;background:var(--sage);color:var(--sage-ink);min-height:88vh;}
+.hero-left{padding:8vh 3vw 8vh 6vw;display:flex;flex-direction:column;justify-content:center;}
+.hero-name{font-family:var(--display);font-size:clamp(19px,1.9vw,25px);font-weight:400;letter-spacing:.4px;color:var(--sage-ink);margin-bottom:2.2vh;}
+.hero-name em{font-style:italic;}
+.slogan{font-size:11.5px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--sage-muted);margin-bottom:5vh;}
+h1{font-family:var(--display);font-size:clamp(42px,6vw,88px);font-weight:340;line-height:1.0;letter-spacing:-1.2px;font-variation-settings:'opsz' 144;}
+h1 .l{display:block;}
+h1 em{font-style:italic;font-weight:340;color:var(--oxblood);letter-spacing:-.8px;}
+.whisper{font-family:var(--display);font-style:italic;font-weight:340;font-size:clamp(16px,1.5vw,20px);color:var(--oxblood);margin-top:3vh;}
+.whisper::before{content:'';display:inline-block;width:36px;height:1px;background:var(--oxblood);vertical-align:middle;margin-right:14px;}
+.hero-desc{max-width:460px;font-size:15px;line-height:1.68;color:var(--sage-muted);margin-top:5vh;}
+.hero-desc strong{color:var(--sage-ink);font-weight:600;}
+.btn{font-family:var(--grotesk);background:var(--sage-ink);color:var(--sage);border:1px solid var(--sage-ink);padding:16px 36px;font-size:12.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;display:inline-block;line-height:1;transition:all .25s;margin-top:4.5vh;align-self:flex-start;}
+.btn:hover{background:var(--oxblood);border-color:var(--oxblood);color:var(--sage);}
+/* even mat: identical padding all four sides via aspect-ratio box centered */
+.hero-right{display:flex;align-items:center;justify-content:center;padding:6vh 6vw;}
+.hero-frame{position:relative;width:100%;max-width:420px;aspect-ratio:4/5;overflow:hidden;box-shadow:0 22px 55px rgba(28,29,20,.24);}
+.hero-frame img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.hero-frame .grain{position:absolute;inset:0;opacity:.16;pointer-events:none;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+.hero-frame .cap{position:absolute;left:14px;bottom:12px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(232,231,216,.78);}
 
-/* ── SECTION 1: HERO ──
-   88vh so the very top of Two Doors peeks below — natural scroll cue */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:560px;max-height:88vh;overflow:hidden;}
-.hero-left{display:flex;flex-direction:column;justify-content:space-between;padding:52px 60px 52px 80px;}
+/* ══ CRED STRIP — bridge ══ */
+.cred{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;padding:22px 6vw;background:var(--bridge);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);}
+.cred .dot{width:3px;height:3px;border-radius:50%;background:var(--oxblood);}
 
-/* Brand identity block — given weight and space */
-.hero-identity{margin-bottom:0;}
-.hero-name{font-family:var(--serif);font-size:clamp(32px,2.8vw,36px);font-weight:500;color:var(--rust);margin-bottom:12px;line-height:1.2;letter-spacing:.5px;}
-.hero-tagline{font-family:var(--serif);font-size:clamp(16px,1.6vw,20px);font-style:italic;font-weight:400;color:var(--muted);line-height:1.4;}
+/* ══ SLUG-LINE SCENE HEADINGS ══ */
+.slug{display:flex;align-items:center;gap:0;padding:0 6vw;margin:9vh 0 5vh;}
+.slug-no{background:var(--ink);color:var(--white);font-size:12px;font-weight:600;letter-spacing:3px;padding:13px 18px;white-space:nowrap;}
+.slug-desc{font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);white-space:nowrap;padding:0 20px;}
+.slug-rule{flex:1;height:1px;background:var(--hairline);}
+.slug-verb{font-family:var(--display);font-style:italic;font-weight:340;font-size:clamp(22px,2.4vw,30px);color:var(--ink);white-space:nowrap;padding-left:22px;}
 
-/* Hook block */
-.hero-hook{display:flex;flex-direction:column;}
-.hero-title{font-family:var(--serif);font-size:clamp(28px,3vw,42px);font-weight:400;line-height:1.18;color:var(--dark);margin-bottom:20px;}
-.rule{width:44px;height:2px;background:var(--rust);margin-bottom:20px;}
-.hero-lead{font-family:var(--serif);font-size:clamp(15px,1.3vw,17px);font-style:italic;font-weight:300;line-height:1.62;color:var(--muted);margin-bottom:28px;}
-.hero-lead strong{font-style:normal;font-weight:500;color:var(--dark);}
-.btn-solid{background:var(--dark);color:white;padding:15px 34px;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:2px solid var(--dark);transition:all .3s;display:inline-block;line-height:1;}
-.hero-left .btn-solid{align-self:flex-start;}
-.btn-solid:hover{background:var(--rust);border-color:var(--rust);}
+/* ══ DOORS ══ */
+.doors{display:grid;grid-template-columns:1fr 1fr;padding:0 6vw 3vh;background:var(--white);}
+.door{padding:4vh 4.5vw 6vh;}
+.door:first-child{border-right:1px solid var(--hairline);padding-left:0;}
+.door:last-child{padding-right:0;}
+.door-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--ink);margin-bottom:3vh;}
+.door h2{font-family:var(--display);font-weight:340;line-height:1.08;letter-spacing:-.6px;font-size:clamp(28px,3vw,44px);margin-bottom:3vh;font-variation-settings:'opsz' 100;}
+.door h2 em{font-style:italic;}
+.door-body{font-size:15px;line-height:1.68;color:var(--muted);max-width:420px;margin-bottom:4vh;}
+.door a.link{font-size:12.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:6px;transition:all .25s;}
+.door a.link:hover{color:var(--muted);border-color:var(--muted);}
 
-.hero-right{position:relative;overflow:hidden;}
-.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;filter:brightness(.92) saturate(.92) contrast(1.05);transition:transform 7s ease;}
-.hero-right:hover img{transform:scale(1.03);}
+/* ══ FOUNDER — parchment (moved up: who he is) ══ */
+.founder{display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw;padding:11vh 6vw;background:var(--parchment);align-items:center;}
+.founder-img{overflow:hidden;height:460px;box-shadow:0 18px 44px rgba(28,29,20,.14);}
+.founder-img img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
+.founder-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--ink);margin-bottom:3vh;}
+.founder-cred{font-family:var(--display);font-style:italic;font-size:clamp(18px,1.8vw,24px);color:var(--muted);line-height:1.5;margin-bottom:4vh;max-width:520px;}
+.founder-body{font-size:15px;line-height:1.72;color:var(--muted);max-width:520px;margin-bottom:4vh;}
+.founder-body strong{color:var(--ink);font-weight:600;}
+.founder a.link{font-size:12.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:6px;}
+.founder a.link:hover{color:var(--muted);border-color:var(--muted);}
 
-/* ── SECTION 2: TWO DOORS ── */
-.doors{display:grid;grid-template-columns:1fr 1fr;background:var(--warm-white);}
-.door-panel{padding:72px 56px;}
-.door-panel:first-child{border-right:1px solid var(--warm-gray);}
-.door-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:14px;line-height:1.3;}
-.door-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:300;font-style:italic;line-height:1.15;color:var(--dark);margin-bottom:20px;}
-.door-rule{width:32px;height:2px;background:var(--rust);margin-bottom:20px;}
-.door-body{font-size:17px;font-weight:300;line-height:1.62;color:var(--muted);margin-bottom:32px;max-width:360px;}
-.btn-outline-rust{display:inline-block;padding:13px 28px;border:1.5px solid var(--rust);color:var(--rust);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;line-height:1;}
-.btn-outline-rust:hover{background:var(--rust);color:white;}
+/* ══ METHOD — centred ══ */
+.method{padding:0 6vw 11vh;background:var(--white);}
+.method-head{max-width:680px;margin:0 auto 6vh;text-align:center;}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted);}
+.method-title{font-family:var(--display);font-weight:340;font-size:clamp(30px,3.4vw,50px);letter-spacing:-.6px;line-height:1.1;margin-top:1.5vh;}
+.pillar-list{border-top:1px solid var(--hairline);max-width:760px;margin:0 auto;}
+.pillar-item{display:flex;align-items:baseline;gap:26px;padding:18px 0;border-bottom:1px solid var(--hairline);}
+.pillar-num{font-family:var(--display);font-style:italic;font-size:15px;color:var(--oxblood);width:30px;}
+.pillar-name{font-family:var(--display);font-size:clamp(19px,2vw,26px);font-weight:340;letter-spacing:-.3px;}
+.method-ctas{display:flex;gap:36px;flex-wrap:wrap;margin-top:5vh;justify-content:center;}
+.method-ctas a{font-size:12.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:6px;}
+.method-ctas a:hover{color:var(--muted);border-color:var(--muted);}
 
-/* ── SECTION 3: FOUNDER ── */
-.founder{display:grid;grid-template-columns:1fr 1fr;background:var(--dark);}
-.founder-img{overflow:hidden;min-height:500px;}
-.founder-img img{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;filter:brightness(.82) saturate(.88) contrast(1.05);}
-.founder-text{display:flex;flex-direction:column;justify-content:center;padding:68px 68px;}
-.founder-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#e8935a;margin-bottom:20px;line-height:1.3;}
-.founder-cred{margin-bottom:28px;padding-left:20px;border-left:2px solid var(--rust);}
-.founder-cred p{font-family:var(--serif);font-size:17px;font-style:italic;font-weight:300;color:rgba(255,255,255,.88);line-height:1.58;}
-.founder-body{font-size:17px;font-weight:300;line-height:1.68;color:rgba(255,255,255,.92);margin-bottom:36px;}
-.founder-body strong{color:white;font-weight:500;}
-.btn-ghost{display:inline-block;padding:13px 28px;border:1.5px solid rgba(255,255,255,.5);color:rgba(255,255,255,.82);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;line-height:1;}
-.btn-ghost:hover{border-color:white;color:white;}
+/* ══ IRRFAN — the climax, backstage, elevated ══ */
+.climax{background:var(--sage);padding:10vh 6vw;}
+.climax-eyebrow{text-align:center;font-size:11.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--sage-muted);margin-bottom:5vh;}
+.climax-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:5vw;align-items:center;max-width:1200px;margin:0 auto;}
+.climax-img{overflow:hidden;height:420px;position:relative;box-shadow:0 18px 44px rgba(28,29,20,.22);}
+.climax-img img{width:100%;height:100%;object-fit:cover;object-position:center 28%;}
+.climax-img .grain{position:absolute;inset:0;opacity:.14;pointer-events:none;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+.climax-text p.big{font-family:var(--display);font-weight:340;font-size:clamp(26px,3vw,40px);line-height:1.25;letter-spacing:-.5px;color:var(--sage-ink);margin-bottom:3vh;}
+.climax-text p.big em{font-style:italic;color:var(--oxblood);}
+.climax-text p.sub{font-size:15px;line-height:1.7;color:var(--sage-muted);max-width:440px;}
 
-/* ── SECTION 4: METHOD ── */
-.method{padding:64px 80px;background:var(--cream);}
-.method-head{text-align:center;margin-bottom:36px;}
-.method-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:12px;line-height:1.3;}
-.method-title{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);font-weight:300;color:var(--dark);margin-bottom:12px;line-height:1.2;}
-.method-rule{width:44px;height:2px;background:var(--rust);margin:0 auto;}
-.pillar-list{max-width:680px;margin:0 auto 36px;}
-.pillar-item{display:flex;align-items:baseline;gap:20px;padding:10px 0;border-bottom:1px solid var(--warm-gray);}
-.pillar-item:last-child{border-bottom:none;}
-.pillar-num{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--rust);flex-shrink:0;width:24px;line-height:1;}
-.pillar-name{font-family:var(--serif);font-size:22px;font-weight:400;font-style:italic;color:var(--dark);line-height:1.2;}
-.method-ctas{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
-.btn-outline{display:inline-block;padding:13px 26px;border:1.5px solid var(--dark);color:var(--dark);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;line-height:1;}
-.btn-outline:hover{background:var(--dark);color:white;}
+/* ══ PROOF — resolution, centred intro ══ */
+.proof{padding:0 6vw 11vh;background:var(--white);}
+.proof-intro{max-width:680px;margin:0 auto 6vh;text-align:center;}
+.proof-intro-line{font-family:var(--display);font-weight:340;font-size:clamp(22px,2.5vw,31px);line-height:1.3;margin-top:1.5vh;}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hairline);}
+.proof-card{padding:5vh 3vw 0;border-right:1px solid var(--hairline);}
+.proof-card:last-child{border-right:none;}
+.proof-mark{font-family:var(--display);font-size:44px;color:var(--oxblood);line-height:1;display:block;margin-bottom:1.5vh;}
+.proof-quote{font-size:14.5px;line-height:1.68;color:var(--muted);margin-bottom:3vh;}
+.proof-attr{font-size:12px;letter-spacing:.5px;color:var(--ink);line-height:1.6;font-weight:500;}
 
-/* ── SECTION 5: IRRFAN ── */
-.irrfan{position:relative;overflow:hidden;}
-.irrfan img{width:100%;height:460px;object-fit:cover;object-position:center 15%;display:block;filter:brightness(.65) saturate(.78) contrast(1.1);}
-.irrfan-caption{position:absolute;bottom:0;left:0;right:0;padding:56px 80px 36px;background:linear-gradient(to top,rgba(20,18,16,.88) 55%,transparent);}
-.irrfan-caption p{font-family:var(--serif);font-size:19px;font-style:italic;color:rgba(244,240,234,.9);line-height:1.55;max-width:700px;}
+/* ══ ANUP — black title card, the end ══ */
+.close-beat{background:var(--ink);padding:15vh 6vw;text-align:center;position:relative;}
+.close-beat .grain{position:absolute;inset:0;opacity:.14;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+.close-quote{font-family:var(--display);font-style:italic;font-weight:340;font-size:clamp(24px,3vw,38px);color:var(--white);max-width:840px;margin:0 auto 3vh;line-height:1.4;position:relative;}
+.close-attr{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(251,250,247,.55);position:relative;}
 
-/* ── SECTION 6: PROOF ── */
-.proof{background:var(--cream);padding:80px 80px;}
-.proof-intro{text-align:center;margin-bottom:48px;}
-.proof-eyebrow{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:12px;line-height:1.3;}
-.proof-intro-line{font-family:var(--serif);font-size:clamp(18px,1.7vw,22px);font-weight:300;font-style:italic;color:var(--muted);line-height:1.5;}
-.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.proof-card{background:var(--warm-white);border:1px solid var(--warm-gray);padding:36px 32px;}
-.proof-mark{font-family:var(--serif);font-size:52px;color:var(--rust);opacity:.35;line-height:.5;display:block;margin-bottom:18px;}
-.proof-quote{font-family:var(--serif);font-size:17px;font-style:italic;font-weight:300;line-height:1.65;color:var(--dark);margin-bottom:24px;}
-.proof-attr{font-size:14px;font-weight:600;letter-spacing:.5px;color:var(--rust);line-height:1.55;}
-
-/* ── SECTION 7: ANUP LINE ── */
-.anup{background:var(--dark);padding:88px 80px;text-align:center;}
-.anup-quote{font-family:var(--serif);font-size:clamp(22px,2.4vw,32px);font-weight:300;font-style:italic;line-height:1.45;color:#f4f0ea;max-width:800px;margin:0 auto 28px;}
-.anup-attr{font-size:14px;font-weight:500;letter-spacing:1.5px;color:#e8aa6e;text-transform:uppercase;line-height:1.3;}
-
-/* FOOTER */
-footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
-.footer-top{display:grid;grid-template-columns:1fr 1.3fr 1fr;padding:52px 80px;border-bottom:1px solid var(--warm-gray);}
-.footer-brand img{height:64px;width:auto;margin-bottom:14px;display:block;}
-.footer-tagline{font-size:15px;font-weight:300;line-height:1.6;color:var(--muted);}
-.footer-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-left:1px solid var(--warm-gray);border-right:1px solid var(--warm-gray);padding:0 36px;}
-.footer-mid-text{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--dark);margin-bottom:22px;line-height:1.25;}
-.footer-right{padding-left:44px;display:flex;flex-direction:column;justify-content:center;gap:14px;}
-.contact-row{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:300;color:var(--muted);line-height:1.4;}
-.contact-row svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;stroke:var(--rust);fill:none;stroke-width:1.6;}
-.social-row{display:flex;gap:16px;margin-top:4px;flex-wrap:wrap;}
-.social-row a{color:var(--dark);text-decoration:none;font-size:13px;letter-spacing:1px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
-.social-row a:hover{color:var(--rust);border-color:var(--rust);}
-.footer-sitemap{display:none;text-align:center;padding:12px 24px 20px;border-top:1px solid var(--warm-gray);flex-wrap:wrap;gap:12px;justify-content:center;}
-.footer-sitemap a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;font-weight:500;}
-.footer-sitemap a:hover{color:var(--rust);}
-@media(max-width:960px){.footer-sitemap{display:flex;}}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 80px;flex-wrap:wrap;gap:8px;}
-.footer-bottom p{font-size:13px;color:var(--muted);}
+/* ══ FOOTER — white end credits ══ */
+footer{background:var(--white);border-top:1px solid var(--hairline);}
+.footer-top{display:grid;grid-template-columns:1fr 1.2fr 1fr;padding:7vh 6vw;border-bottom:1px solid var(--hairline);gap:4vw;}
+.footer-brand img{height:92px;width:auto;margin-bottom:16px;}
+.footer-tagline{font-family:var(--display);font-style:italic;font-size:15px;line-height:1.6;color:var(--oxblood);}
+.footer-mid{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-left:1px solid var(--hairline);border-right:1px solid var(--hairline);padding:0 3vw;}
+.footer-mid-text{font-family:var(--display);font-size:26px;font-weight:340;margin-bottom:20px;color:var(--ink);}
+.btn-solid{background:var(--ink);color:var(--white);padding:15px 32px;font-size:12.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);transition:all .25s;display:inline-block;}
+.btn-solid:hover{background:var(--oxblood);border-color:var(--oxblood);}
+.footer-right{display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.contact-row{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted);line-height:1.4;}
+.contact-row svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;stroke:var(--oxblood);fill:none;stroke-width:1.6;}
+.social-row{display:flex;gap:16px;margin-top:2px;flex-wrap:wrap;}
+.social-row a{color:var(--ink);text-decoration:none;font-size:12.5px;letter-spacing:.5px;border-bottom:1px solid transparent;}
+.social-row a:hover{color:var(--oxblood);border-color:var(--oxblood);}
+.footer-sitemap{display:flex;gap:22px;flex-wrap:wrap;padding:20px 6vw 0;font-size:12.5px;}
+.footer-sitemap a{text-decoration:none;color:var(--muted);}
+.footer-sitemap a:hover{color:var(--oxblood);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 6vw 24px;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--muted);}
 .footer-links{display:flex;gap:24px;}
-.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--rust);}
+.footer-links a{text-decoration:none;color:var(--muted);}
+.footer-links a:hover{color:var(--oxblood);}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.hero-identity{animation:fadeUp .6s ease .06s both;}
-.hero-title{animation:fadeUp .6s ease .18s both;}
-.rule{animation:fadeUp .6s ease .28s both;}
-.hero-lead{animation:fadeUp .6s ease .36s both;}
-.btn-solid{animation:fadeUp .6s ease .44s both;}
+/* ══ Reveals ══ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+@keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.hero-name{animation:rise .7s cubic-bezier(.2,.7,.3,1) .1s both;}
+.slogan{animation:rise .7s cubic-bezier(.2,.7,.3,1) .2s both;}
+h1 .l:nth-child(1){animation:rise .7s cubic-bezier(.2,.7,.3,1) .3s both;}
+h1 .l:nth-child(2){animation:rise .7s cubic-bezier(.2,.7,.3,1) .4s both;}
+.whisper{animation:rise .7s cubic-bezier(.2,.7,.3,1) .55s both;}
+.hero-desc,.hero .btn{animation:rise .7s cubic-bezier(.2,.7,.3,1) .65s both;}
+.hero-right{animation:rise .9s cubic-bezier(.2,.7,.3,1) .25s both;}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}.reveal{opacity:1;transform:none;}}
 
-/* MOBILE */
-@media(max-width:960px){
-  nav{padding:0 22px;}
-  .hamburger{display:flex;}
-  .nav-menu{display:none;position:absolute;top:88px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:12px 0 20px;border-bottom:1px solid var(--warm-gray);box-shadow:0 8px 20px rgba(0,0,0,.06);}
-  .nav-menu.open{display:flex;}
-  .nav-menu li a{padding:13px 26px;font-size:14px;}
-  .nav-cta{margin:10px 26px 0!important;text-align:center;display:block!important;padding:13px 22px!important;}
-  .hero{grid-template-columns:1fr;min-height:auto;max-height:none;}
-  .hero-left{padding:36px 24px 32px;}
-  .hero-identity{margin-bottom:28px;padding-bottom:24px;}
-  .hero-tagline{font-size:20px;}
-  .hero-title{margin-top:24px;}
-  .btn-solid{align-self:auto;width:100%;text-align:center;}
-  .hero-right{height:280px;}
-  .doors{grid-template-columns:1fr;}
-  .door-panel:first-child{border-right:none;border-bottom:1px solid var(--warm-gray);}
-  .door-panel{padding:48px 24px 52px;}
-  .founder{grid-template-columns:1fr;}
-  .founder-img{min-height:260px;}
-  .founder-text{padding:44px 24px;}
-  .method{padding:52px 22px;}
-  .pillar-list{max-width:100%;}
-  .method-ctas{flex-direction:column;align-items:stretch;}
-  .method-ctas .btn-outline{text-align:center;}
-  .irrfan img{height:300px;}
-  .irrfan-caption{padding:36px 24px 24px;}
-  .irrfan-caption p{font-size:16px;}
-  .proof{padding:52px 22px;}
-  .proof-grid{grid-template-columns:1fr;gap:20px;}
-  .anup{padding:64px 24px;}
-  .footer-top{grid-template-columns:1fr;padding:36px 24px;gap:32px;}
-  .footer-mid{border:none;border-top:1px solid var(--warm-gray);border-bottom:1px solid var(--warm-gray);padding:32px 0;}
-  .footer-right{padding-left:0;}
-  .footer-bottom{flex-direction:column;text-align:center;padding:16px 24px;}
+/* ══ MOBILE ══ */
+@media(max-width:900px){
+  nav{padding:12px 22px;}
+  .logo-nav img{height:46px;}
+  .nav-links{display:none;}
+  .nav-trigger{display:flex;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:6vh 24px 5vh;order:2;}
+  .hero-right{padding:5vh 24px 0;order:1;}
+  .hero-frame{max-width:340px;margin:0 auto;}
+  .cred{padding:18px 24px;gap:10px;}
+  .slug{padding:0 24px;margin:7vh 0 4vh;}
+  .slug-desc{padding:0 14px;}
+  .slug-verb{padding-left:14px;}
+  .doors{grid-template-columns:1fr;padding:0 24px 2vh;}
+  .door{padding:4vh 0 5vh;}
+  .door:first-child{border-right:none;border-bottom:1px solid var(--hairline);padding-left:0;}
+  .founder{grid-template-columns:1fr;padding:7vh 24px;gap:4vh;}
+  .founder-img{height:340px;}
+  .method{padding:0 24px 8vh;}
+  .climax{padding:9vh 24px;}
+  .climax-inner{grid-template-columns:1fr;gap:4vh;}
+  .climax-img{height:340px;}
+  .proof{padding:0 24px 8vh;}
+  .proof-grid{grid-template-columns:1fr;}
+  .proof-card{border-right:none;border-bottom:1px solid var(--hairline);padding:4vh 0;}
+  .close-beat{padding:10vh 24px;}
+  .footer-top{grid-template-columns:1fr;padding:5vh 24px;gap:4vh;}
+  .footer-mid{border:none;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:4vh 0;}
+  .footer-sitemap{padding:18px 24px 0;}
+  .footer-bottom{flex-direction:column;text-align:center;padding:16px 24px 22px;}
 }
 </style>
 </head>
@@ -205,144 +231,154 @@ footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
 
 <nav>
   <a href="index.html" class="logo-nav">
-    <img src="assets/images/spl-mark-clean-v2.png" alt="Subtext Performance Lab">
+    <img src="assets/images/spl-mark-oxblood.png" alt="Subtext Performance Lab">
   </a>
-  <button class="hamburger" id="ham" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-menu" id="navmenu">
-    <li class="active"><a href="index.html">Home</a></li>
-    <li><a href="for-actors.html">Actors</a></li>
-    <li><a href="for-teams.html">Leaders &amp; Teams</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="engage.html">Engage</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  <ul class="nav-links">
+    <li><a href="index.html"><span class="nav-num">01</span><span class="nav-label">Home</span></a></li>
+    <li><a href="for-actors.html"><span class="nav-num">02</span><span class="nav-label">Actors</span></a></li>
+    <li><a href="for-teams.html"><span class="nav-num">03</span><span class="nav-label">Leaders &amp; Teams</span></a></li>
+    <li><a href="about.html"><span class="nav-num">04</span><span class="nav-label">About</span></a></li>
+    <li><a href="engage.html"><span class="nav-num">05</span><span class="nav-label">Engage</span></a></li>
+    <li><a href="contact.html" class="cta"><span class="nav-label">Get in Touch</span></a></li>
   </ul>
+  <button class="nav-trigger" id="navTrigger" aria-label="Menu" aria-expanded="false">
+    <span class="mtxt" id="triggerLabel">Menu</span>
+    <span class="bars"><span></span><span></span><span></span></span>
+  </button>
 </nav>
 
-<div class="page-wrap">
+<div class="overlay" id="overlay">
+  <button class="overlay-close" id="overlayClose">Close ✕</button>
+  <ul class="overlay-links">
+    <li><a href="index.html"><span class="overlay-num">01</span><span class="overlay-label">Home</span></a></li>
+    <li><a href="for-actors.html"><span class="overlay-num">02</span><span class="overlay-label">Actors</span></a></li>
+    <li><a href="for-teams.html"><span class="overlay-num">03</span><span class="overlay-label">Leaders &amp; Teams</span></a></li>
+    <li><a href="about.html"><span class="overlay-num">04</span><span class="overlay-label">About</span></a></li>
+    <li><a href="engage.html"><span class="overlay-num">05</span><span class="overlay-label">Engage</span></a></li>
+    <li><a href="contact.html"><span class="overlay-num">06</span><span class="overlay-label">Contact</span></a></li>
+  </ul>
+</div>
 
-<!-- SECTION 1: HERO -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-
-    <!-- Identity block: name + tagline, pinned to top -->
-    <div class="hero-identity">
-      <p class="hero-name">Subtext Performance Lab</p>
-      <p class="hero-tagline">Beyond Words. Beyond Surface. Presence That Matters.</p>
-    </div>
-
-    <!-- Hook block: pushed to bottom via space-between -->
-    <div class="hero-hook">
-      <h1 class="hero-title">The training that teaches you to command attention — and hold it.</h1>
-      <div class="rule"></div>
-      <p class="hero-lead">Led by <strong>Pushpendra Singh</strong> — Former Head of Screen Acting, FTII. Winner, Best Director, Hong Kong International Film Festival.</p>
-      <a href="contact.html" class="btn-solid">Get in Touch</a>
-    </div>
-
+    <p class="hero-name">Subtext <em>Performance Lab</em></p>
+    <p class="slogan">Beyond Words. Beyond Surface. Presence That Matters.</p>
+    <h1>
+      <span class="l">Presence that commands attention.</span>
+      <span class="l"><em>Depth</em> that holds it.</span>
+    </h1>
+    <p class="whisper">that's the subtext — and it can be trained</p>
+    <p class="hero-desc">Performance training for actors, leaders and teams. Led by <strong>Pushpendra Singh</strong> — Former Head of Screen Acting, FTII. Winner, Best Director, Hong Kong International Film Festival.</p>
+    <a href="contact.html" class="btn">Get in Touch</a>
   </div>
   <div class="hero-right">
-    <img src="assets/images/pushpendra-singh-founder-of-subtext-performance-la.jpg" alt="Pushpendra Singh, founder of Subtext Performance Lab">
+    <div class="hero-frame">
+      <img src="assets/images/hero-portrait-4x5.jpg" alt="Pushpendra Singh, founder of Subtext Performance Lab">
+      <div class="grain"></div>
+      <span class="cap">Pushpendra Singh</span>
+    </div>
   </div>
 </section>
 
-<!-- SECTION 2: TWO DOORS -->
+<!-- CRED STRIP -->
+<div class="cred">
+  <span>FTII Pune</span><span class="dot"></span>
+  <span>Trusted by directors &amp; production houses</span><span class="dot"></span>
+  <span>Film &amp; OTT cast workshops</span>
+</div>
+
+<!-- SLUG 01 -->
+<div class="slug reveal">
+  <span class="slug-no">01</span>
+  <span class="slug-desc">Choose your door</span>
+  <span class="slug-rule"></span>
+  <span class="slug-verb">Step in</span>
+</div>
+
 <section class="doors">
-  <div class="door-panel">
-    <p class="door-eyebrow">For Actors</p>
-    <h2 class="door-title">A process that unravels the truth.</h2>
-    <div class="door-rule"></div>
-    <p class="door-body">From beginners to working professionals — individual training, project-based coaching and full production workshops for film and OTT.</p>
-    <a href="for-actors.html" class="btn-outline-rust">Explore for Actors →</a>
+  <div class="door reveal">
+    <p class="door-eyebrow">Actors</p>
+    <h2>A process that unravels <em>the truth.</em></h2>
+    <p class="door-body">Depth, presence and authenticity that hold up in close-up. For actors from first craft to preparing a specific role.</p>
+    <a href="for-actors.html" class="link">Explore for Actors →</a>
   </div>
-  <div class="door-panel">
-    <p class="door-eyebrow">For Leaders &amp; Teams</p>
-    <h2 class="door-title">A presence that earns respect.</h2>
-    <div class="door-rule"></div>
-    <p class="door-body">One-on-one executive coaching and full team workshops — built around real performance under pressure, not theory.</p>
-    <a href="for-teams.html" class="btn-outline-rust">Explore for Leaders &amp; Teams →</a>
+  <div class="door reveal">
+    <p class="door-eyebrow">Leaders &amp; Teams</p>
+    <h2>A presence that earns <em>you respect.</em></h2>
+    <p class="door-body">We strip away corporate cliché and train leaders and teams to drop pre-programmed scripts, regulate under pressure, and respond to the person actually in front of them — one-on-one or as a full team.</p>
+    <a href="for-teams.html" class="link">Explore for Teams →</a>
   </div>
 </section>
 
-<!-- SECTION 3: FOUNDER -->
-<section class="founder">
+<!-- FOUNDER — who he is -->
+<section class="founder reveal">
   <div class="founder-img">
     <img src="assets/images/pushpendra-singh-on-set-arri-camera.jpg" alt="Pushpendra Singh on location for Ashwatthama">
   </div>
-  <div class="founder-text">
+  <div>
     <p class="founder-eyebrow">The Founder</p>
-    <div class="founder-cred">
-      <p>His latest film, Laila Aur Satt Geet, was selected — nominated for Best Film and Best Director — at the Encounters Competition, Berlin International Film Festival.</p>
-    </div>
+    <p class="founder-cred">His latest film, Laila Aur Satt Geet, was selected — nominated for Best Film and Best Director — at the Encounters Competition, Berlin International Film Festival.</p>
     <p class="founder-body">Trained at FTII. Headed its Screen Acting department. Has workshopped ensemble casts for <strong>Netflix's Kohrra and Class</strong>, and for films with <strong>Irrfan Khan, Golshifteh Farahani, Tillotama Shome, Sara Arjun, Tisca Chopra and Rasika Dugal</strong>. Directors call him before shoots begin. Executives call him before high-stakes moments.</p>
-    <a href="about.html" class="btn-ghost">About Pushpendra →</a>
+    <a href="about.html" class="link">About Pushpendra →</a>
   </div>
 </section>
 
-<!-- SECTION 4: METHOD -->
-<section class="method">
+<!-- SLUG 02 -->
+<div class="slug reveal">
+  <span class="slug-no">02</span>
+  <span class="slug-desc">The method</span>
+  <span class="slug-rule"></span>
+  <span class="slug-verb">Feel</span>
+</div>
+<section class="method reveal">
   <div class="method-head">
-    <p class="method-eyebrow">The Seven Pillars of Our Training</p>
+    <p class="eyebrow">The Seven Pillars of Our Training</p>
     <h2 class="method-title">One Methodology. Two Worlds.</h2>
-    <div class="method-rule"></div>
   </div>
   <div class="pillar-list">
-    <div class="pillar-item">
-      <span class="pillar-num">01</span>
-      <p class="pillar-name">Calm Under Pressure</p>
-    </div>
-    <div class="pillar-item">
-      <span class="pillar-num">02</span>
-      <p class="pillar-name">The Mask and the Truth</p>
-    </div>
-    <div class="pillar-item">
-      <span class="pillar-num">03</span>
-      <p class="pillar-name">Find Your Voice</p>
-    </div>
-    <div class="pillar-item">
-      <span class="pillar-num">04</span>
-      <p class="pillar-name">Adapt Fluidly</p>
-    </div>
-    <div class="pillar-item">
-      <span class="pillar-num">05</span>
-      <p class="pillar-name">Reading the Room</p>
-    </div>
-    <div class="pillar-item">
-      <span class="pillar-num">06</span>
-      <p class="pillar-name">Own the Room</p>
-    </div>
-    <div class="pillar-item">
-      <span class="pillar-num">07</span>
-      <p class="pillar-name">Navigate the Space</p>
-    </div>
+    <div class="pillar-item"><span class="pillar-num">01</span><p class="pillar-name">Calm Under Pressure</p></div>
+    <div class="pillar-item"><span class="pillar-num">02</span><p class="pillar-name">The Mask and the Truth</p></div>
+    <div class="pillar-item"><span class="pillar-num">03</span><p class="pillar-name">Find Your Voice</p></div>
+    <div class="pillar-item"><span class="pillar-num">04</span><p class="pillar-name">Adapt Fluidly</p></div>
+    <div class="pillar-item"><span class="pillar-num">05</span><p class="pillar-name">Reading the Room</p></div>
+    <div class="pillar-item"><span class="pillar-num">06</span><p class="pillar-name">Own the Room</p></div>
+    <div class="pillar-item"><span class="pillar-num">07</span><p class="pillar-name">Navigate the Space</p></div>
   </div>
   <div class="method-ctas">
-    <a href="for-actors.html#method" class="btn-outline">See how this works for actors →</a>
-    <a href="for-teams.html#method" class="btn-outline">See how this works for leaders &amp; teams →</a>
+    <a href="for-actors.html#method">See how this works for actors →</a>
+    <a href="for-teams.html#method">See how this works for leaders &amp; teams →</a>
   </div>
 </section>
 
-<!-- SECTION 5: IRRFAN -->
-<section class="irrfan">
-  <img src="assets/images/irrfan-khan-and-pushpendra-singh-in-conversation.jpg" alt="Irrfan Khan in conversation with Pushpendra Singh during the making of Qissa">
-  <div class="irrfan-caption">
-    <p>Irrfan Khan in one of his many conversations with Pushpendra on acting, during the making of Qissa.</p>
+<!-- IRRFAN — THE CLIMAX -->
+<section class="climax reveal">
+  <p class="climax-eyebrow">Some lessons happen off camera</p>
+  <div class="climax-inner">
+    <div class="climax-img">
+      <img src="assets/images/irrfan-khan-and-pushpendra-singh-in-conversation.jpg" alt="Irrfan Khan in conversation with Pushpendra Singh during the making of Qissa">
+      <div class="grain"></div>
+    </div>
+    <div class="climax-text">
+      <p class="big">One of his many conversations on acting, during the making of <em>Qissa.</em></p>
+      <p class="sub">Where much of Pushpendra's own learning happened — watching two greats at work: Irrfan Khan and director Anup Singh.</p>
+    </div>
   </div>
 </section>
 
-<!-- SECTION 6: PROOF -->
-<section class="proof">
+<!-- SLUG 03 -->
+<div class="slug reveal">
+  <span class="slug-no">03</span>
+  <span class="slug-desc">The proof</span>
+  <span class="slug-rule"></span>
+  <span class="slug-verb">Witness</span>
+</div>
+<section class="proof reveal">
   <div class="proof-intro">
-    <p class="proof-eyebrow">From the People Who've Worked with Pushpendra</p>
+    <p class="eyebrow">From the People Who've Worked with Pushpendra</p>
     <p class="proof-intro-line">Directors. Producers. Casting directors.<br>The people who see what the work produces.</p>
   </div>
   <div class="proof-grid">
-    <div class="proof-card">
-      <span class="proof-mark">&ldquo;</span>
-      <p class="proof-quote">Having worked with Pushpendra on projects including Qissa, Song of the Scorpions, Sir, Class and Stay, I have seen his deep understanding of the actor's craft and creative process. His workshops and on-set work help actors arrive prepared and emotionally ready, saving valuable shooting time.</p>
-      <p class="proof-attr">Rakesh Mehra — Executive Producer<br>including Qissa, Sir, Class (Netflix) and international co-productions</p>
-    </div>
     <div class="proof-card">
       <span class="proof-mark">&ldquo;</span>
       <p class="proof-quote">For CLA$$, we cast a large ensemble of mostly non-actors from very different backgrounds. Pushpendra's work was instrumental in helping them find emotional truth, confidence, and a shared performance language. Watching this young talent grow over the course of the process was incredible.</p>
@@ -350,24 +386,29 @@ footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
     </div>
     <div class="proof-card">
       <span class="proof-mark">&ldquo;</span>
-      <p class="proof-quote">What I particularly value is his approach to scene work and text analysis. His ability to break down a scene, uncover its underlying dynamics, and guide actors towards the right approach provides invaluable insight, whether preparing for an audition or performing on set. He teaches actors not just what to do, but how to think about a scene and build a process around their work.</p>
+      <p class="proof-quote">Having worked with Pushpendra on projects including Qissa, Song of the Scorpions, Sir, Class and Stay, I have seen his deep understanding of the actor's craft and creative process. His workshops and on-set work help actors arrive prepared and emotionally ready, saving valuable shooting time.</p>
+      <p class="proof-attr">Rakesh Mehra — Executive Producer<br>including Qissa, Sir, Class (Netflix) and international co-productions</p>
+    </div>
+    <div class="proof-card">
+      <span class="proof-mark">&ldquo;</span>
+      <p class="proof-quote">What I particularly value is his approach to scene work and text analysis. His ability to break down a scene, uncover its underlying dynamics, and guide actors towards the right approach provides invaluable insight, whether preparing for an audition or performing on set.</p>
       <p class="proof-attr">Vaibhav Vishant — Casting Director<br>Anti-Casting</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 7: ANUP LINE -->
-<section class="anup">
-  <p class="anup-quote">&ldquo;He is one of the few who can lead an actor away from the imitation of life to revelation of life.&rdquo;</p>
-  <p class="anup-attr">Anup Singh &nbsp;·&nbsp; Director, Qissa &amp; Song of the Scorpions</p>
+<!-- ANUP — black title card -->
+<section class="close-beat reveal">
+  <div class="grain"></div>
+  <p class="close-quote">&ldquo;He is one of the few who can lead an actor away from the imitation of life to revelation of life.&rdquo;</p>
+  <p class="close-attr">Anup Singh · Director, Qissa &amp; Song of the Scorpions</p>
 </section>
 
-</div><!-- end page-wrap -->
-
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="assets/images/spl-wordmark-clean.png" alt="Subtext Performance Lab">
+      <img src="assets/images/spl-wordmark-oxblood.png" alt="Subtext Performance Lab">
       <p class="footer-tagline">Beyond Words. Beyond Surface.<br>Presence That Matters.</p>
     </div>
     <div class="footer-mid">
@@ -391,13 +432,6 @@ footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 Subtext Performance Lab. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="legal.html#privacy">Privacy Policy</a>
-      <a href="legal.html#terms">Terms &amp; Conditions</a>
-    </div>
-  </div>
   <div class="footer-sitemap">
     <a href="index.html">Home</a>
     <a href="for-actors.html">Actors</a>
@@ -406,15 +440,28 @@ footer{background:var(--warm-white);border-top:1px solid var(--warm-gray);}
     <a href="engage.html">Engage</a>
     <a href="contact.html">Contact</a>
   </div>
+  <div class="footer-bottom">
+    <p>© 2026 Subtext Performance Lab. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="legal.html#privacy">Privacy Policy</a>
+      <a href="legal.html#terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  const ham = document.getElementById('ham');
-  const menu = document.getElementById('navmenu');
-  ham.addEventListener('click', () => {
-    ham.classList.toggle('open');
-    menu.classList.toggle('open');
-  });
+  const trig = document.getElementById('navTrigger');
+  const overlay = document.getElementById('overlay');
+  const label = document.getElementById('triggerLabel');
+  const closeBtn = document.getElementById('overlayClose');
+  function openMenu(){ overlay.classList.add('open'); trig.classList.add('open'); trig.setAttribute('aria-expanded','true'); label.textContent='Close'; }
+  function closeMenu(){ overlay.classList.remove('open'); trig.classList.remove('open'); trig.setAttribute('aria-expanded','false'); label.textContent='Menu'; }
+  trig.addEventListener('click', () => { overlay.classList.contains('open') ? closeMenu() : openMenu(); });
+  closeBtn.addEventListener('click', closeMenu);
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
